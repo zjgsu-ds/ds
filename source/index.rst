@@ -12,14 +12,13 @@
 
 .. toctree::
    :maxdepth: 1
+   :glob:
 
-   chap01/index.rst
-   chap02/index.rst
+   desc/index
+   chap*/index
 
-
-Indices and tables
-==================
+索引和表格
+==========
 
 * :ref:`genindex`
 * :ref:`search`
-
