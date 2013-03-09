@@ -14,7 +14,7 @@
    :maxdepth: 1
    :glob:
 
-   desc/index
+   syllabus/index
    chap*/index
 
 索引和表格
