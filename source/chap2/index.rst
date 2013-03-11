@@ -7,6 +7,16 @@
 
 :download:`下载 <chap2.ppt>`
 
+作业
+====
+
+见 `ACM竞赛平台 <http://acm.zjgsu.edu.cn/JudgeOnline/contest.php?cid=1565>`_ .
+
+作业参考答案
+============
+
+TBD
+
 代码下载
 ========
 
