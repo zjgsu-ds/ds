@@ -26,11 +26,11 @@ TBD
 * :download:`仅支持int的顺序表 <LinearList_int.c>`
 * :download:`支持通用类型的顺序表 <LinearList_general.c>`
 * :download:`动态申请内存的顺序表 <LinearList_general_dynamic.c>`
-* :download:`集合并的顺序表实现 <Union_linkList.c>`
+* :download:`集合并的顺序表实现 <Union_sequenceList.c>`
 
 单链表
 ------
-* :download:`单链表 <Linklist.c>`
+* :download:`单链表 <LinkList.c>`
 * :download:`集合并的链表实现 <Union_linkList.c>`
 * :download:`多项式加法 <polynomial_operation.c>`
 
