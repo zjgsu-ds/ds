@@ -16,4 +16,3 @@
 
 * :download:`顺序表实现 <stack.c>`
 * :download:`链表实现 <stack_list.c>`
-
