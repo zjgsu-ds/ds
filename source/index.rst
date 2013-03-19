@@ -16,6 +16,7 @@
 
    syllabus/index
    chap*/index
+   acm/index
 
 索引和表格
 ==========
