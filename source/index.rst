@@ -14,7 +14,6 @@
    :maxdepth: 1
    :glob:
 
-   syllabus/index
    chap*/index
 
 相关资料
@@ -23,4 +22,5 @@
 .. toctree::
    :maxdepth: 1
 
+   syllabus/index
    acm/index
