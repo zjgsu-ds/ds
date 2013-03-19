@@ -25,7 +25,7 @@ ACM平台介绍
 
 #. 多组输入数据，不说明多少组，直到读至输入文件末尾为止
 
-    示例：`A + B Problem <http://acm.zjgsu.edu.cn/JudgeOnline/problem.php?id=1000>`_
+    示例： `A + B Problem <http://acm.zjgsu.edu.cn/JudgeOnline/problem.php?id=1000>`_
 
     .. code-block:: c
 
