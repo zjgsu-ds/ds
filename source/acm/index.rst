@@ -109,7 +109,7 @@ ACM平台介绍
 
     很多题目都要求在输出数据的恰当位置加空行。一个空行就是一个单独的"\n"。这里，有的题目说：“After each test case, you should output one blank line”，而有的题目说：“Between each test case, you should ouput one blank line”。要注意After和Between的区别，因为如果多了一或少了空行，将导致Presentation Error甚至Wrong Answer。
 
-    #. After
+    * After
         这种情况最简单，只需要输出结果后，再加一个printf("\n")或puts("")就行了，就像这样：
 
         .. code-block:: c
@@ -142,7 +142,7 @@ ACM平台介绍
                 return 0;
             }
 
-    #. Between
+    * Between
         Between和After不同的是，最后一组结果后面不应该再加单独的"\n"，应该像这样：
 
         .. code-block:: c
