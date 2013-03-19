@@ -16,10 +16,11 @@
 
    syllabus/index
    chap*/index
+
+相关资料
+========
+
+.. toctree::
+   :maxdepth: 1
+
    acm/index
-
-索引和表格
-==========
-
-* :ref:`genindex`
-* :ref:`search`
