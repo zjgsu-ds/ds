@@ -24,3 +24,4 @@
 
    syllabus/index
    acm/index
+   style/index
