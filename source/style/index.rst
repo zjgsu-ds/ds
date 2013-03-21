@@ -37,7 +37,7 @@ Linux内核代码风格
 在switch语句中消除多级缩进的首选的方式是让“switch”和从属于它的“case”标签对齐于同
 一列，而不要“两次缩进”“case”标签。比如：
 
-.. code:: c
+.. code-block:: c
 
     switch (suffix) {
     case 'G':
@@ -58,7 +58,7 @@ Linux内核代码风格
 
 不要把多个语句放在一行里，除非你有什么东西要隐藏：
 
-.. code:: c
+.. code-block:: c
 
     if (condition) do_this;
       do_something_everytime;
@@ -82,7 +82,7 @@ Linux内核代码风格
 也明显的靠右。同样的规则也适用于有很长参数列表的函数头。长字符串也要打散成较短的
 字符串。唯一的例外是超过80列可以大幅度提高可读性并且不会隐藏信息的情况。
 
-.. code:: c
+.. code-block:: c
 
     void fun(int a, int b, int c)
     {
@@ -101,7 +101,7 @@ C语言风格中另外一个常见问题是大括号的放置。和缩进大小�
 略并没有多少技术上的原因，不过首选的方式，就像Kernighan和Ritchie展示给我们的，是
 把起始大括号放在行尾，而把结束大括号放在行首，所以：
 
-.. code:: c
+.. code-block:: c
 
     if (x is true) {
         we do y
@@ -109,7 +109,7 @@ C语言风格中另外一个常见问题是大括号的放置。和缩进大小�
 
 这适用于所有的非函数语句块（if、switch、for、while、do）。比如：
 
-.. code:: c
+.. code-block:: c
 
     switch (action) {
     case KOBJ_ADD:
@@ -124,7 +124,7 @@ C语言风格中另外一个常见问题是大括号的放置。和缩进大小�
 
 不过，有一个例外，那就是函数：函数的起始大括号放置于下一行的开头，所以：
 
-.. code:: c
+.. code-block:: c
 
     int function(int x)
     {
@@ -138,7 +138,7 @@ a）K&R是_正确的_，并且（b）K&R是正确的。此外，不管怎样函�
 注意结束大括号独自占据一行，除非它后面跟着同一个语句的剩余部分，也就是do语句中的
 “while”或者if语句中的“else”，像这样：
 
-.. code:: c
+.. code-block:: c
 
     do {
         body of do-loop
@@ -146,7 +146,7 @@ a）K&R是_正确的_，并且（b）K&R是正确的。此外，不管怎样函�
 
 和
 
-.. code:: c
+.. code-block:: c
 
     if (x == y) {
         ..
@@ -164,7 +164,7 @@ a）K&R是_正确的_，并且（b）K&R是正确的。此外，不管怎样函�
 
 当只有一个单独的语句的时候，不用加不必要的大括号。
 
-.. code:: c
+.. code-block:: c
 
     if (condition)
         action();
@@ -172,7 +172,7 @@ a）K&R是_正确的_，并且（b）K&R是正确的。此外，不管怎样函�
 这点不适用于本身为某个条件语句的一个分支的单独语句。这时需要在两个分支里都使用大
 括号。
 
-.. code:: c
+.. code-block:: c
 
     if (condition) {
         do_this();
@@ -191,26 +191,26 @@ Linux内核的空格使用方式（主要）取决于它是用于函数还是关
 
 所以在这些关键字之后放一个空格：
 
-.. code:: c
+.. code-block:: c
 
     if, switch, case, for, do, while
 
 但是不要在sizeof、typeof、alignof或者__attribute__这些关键字之后放空格。例如，
 
-.. code:: c
+.. code-block:: c
 
     s = sizeof(struct file);
 
 不要在小括号里的表达式两侧加空格。这是一个反例：
 
-.. code:: c
+.. code-block:: c
 
     s = sizeof( struct file );
 
 当声明指针类型或者返回指针类型的函数时，“*”的首选使用方式是使之靠近变量名或者函
 数名，而不是靠近类型名。例子：
 
-.. code:: c
+.. code-block:: c
 
     char *linux_banner;
     unsigned long long memparse(char *ptr, char **retptr);
@@ -218,25 +218,25 @@ Linux内核的空格使用方式（主要）取决于它是用于函数还是关
 
 在大多数二元和三元操作符两侧使用一个空格，例如下面所有这些操作符：
 
-.. code:: c
+.. code-block:: c
 
     =  +  -  <  >  *  /  %  |  &  ^  <=  >=  ==  !=  ?  :
 
 但是一元操作符后不要加空格：
 
-.. code:: c
+.. code-block:: c
 
     &  *  +  -  ~  !  sizeof  typeof  alignof  __attribute__  defined
 
 后缀自加和自减一元操作符前不加空格：
 
-.. code:: c
+.. code-block:: c
 
     ++  --
 
 前缀自加和自减一元操作符后不加空格：
 
-.. code:: c
+.. code-block:: c
 
     ++  --
 
@@ -283,7 +283,7 @@ C是一个简朴的语言，你的命名也应该这样。和Modula-2和Pascal�
 
 对结构体和指针使用typedef是一个错误。当你在代码里看到：
 
-.. code:: c
+.. code-block:: c
 
     vps_t a;
 
@@ -291,7 +291,7 @@ C是一个简朴的语言，你的命名也应该这样。和Modula-2和Pascal�
 
 相反，如果是这样
 
-.. code:: c
+.. code-block:: c
 
     struct virtual_container *a;
 
@@ -364,7 +364,7 @@ C是一个简朴的语言，你的命名也应该这样。和Modula-2和Pascal�
 在源文件里，使用空行隔开不同的函数。如果该函数需要被导出，它的EXPORT*宏应该紧贴
 在它的结束大括号之下。比如：
 
-.. code:: c
+.. code-block:: c
 
     int system_is_up(void)
     {
@@ -392,7 +392,7 @@ C是一个简朴的语言，你的命名也应该这样。和Modula-2和Pascal�
 - 可以避免由于修改时忘记更新某个单独的退出点而导致的错误
 - 减轻了编译器的工作，无需删除冗余代码;)
 
-.. code:: c
+.. code-block:: c
 
     int fun(int a)
     {
@@ -434,7 +434,7 @@ Linux的注释风格是C89 ``/* ... */`` 风格。不要使用C99风格 ``// ...
 
 长（多行）的首选注释风格是：
 
-.. code:: c
+.. code-block:: c
 
     /*
      * This is the preferred style for multi-line
@@ -461,7 +461,7 @@ Linux的注释风格是C89 ``/* ... */`` 风格。不要使用C99风格 ``// ...
 所以你要么放弃GNU emacs，要么改变它让它使用更合理的设定。要采用后一个方案，你可
 以把下面这段粘贴到你的.emacs文件里。
 
-.. code:: cl
+.. code-block:: cl
 
     (defun linux-c-mode ()
       "C mode with adjusted defaults for use with the Linux kernel."
@@ -476,7 +476,7 @@ Linux的注释风格是C89 ``/* ... */`` 风格。不要使用C99风格 ``// ...
 -*- linux-c -*-放在头两行的某个位置，这个模式将会被自动调用。如果你希望在你修改
 /usr/src/linux里的文件时魔术般自动打开linux-c-mode的话，你也可能需要添加
 
-.. code:: cl
+.. code-block:: cl
 
     (setq auto-mode-alist (cons '("/usr/src/linux.*/.*\\.[ch]$" . linux-c-mode)
                 auto-mode-alist))
@@ -555,7 +555,7 @@ indent”。
 
 用于定义常量的宏的名字及枚举里的标签需要大写。
 
-.. code:: c
+.. code-block:: c
 
     #define CONSTANT 0x12345
 
@@ -567,7 +567,7 @@ indent”。
 
 含有多个语句的宏应该被包含在一个do-while代码块里：
 
-.. code:: c
+.. code-block:: c
 
     #define macrofun(a, b, c)           \
         do {                    \
@@ -579,7 +579,7 @@ indent”。
 
 1) 影响控制流程的宏：
 
-.. code:: c
+.. code-block:: c
 
     #define FOO(x)                  \
         do {                    \
@@ -592,7 +592,7 @@ indent”。
 
 2) 依赖于一个固定名字的本地变量的宏：
 
-.. code:: c
+.. code-block:: c
 
     #define FOO(val) bar(index, val)
 
@@ -605,7 +605,7 @@ indent”。
 4) 忘记了优先级：使用表达式定义常量的宏必须将表达式置于一对小括号之内。带参数的
 宏也要注意此类问题。
 
-.. code:: c
+.. code-block:: c
 
     #define CONSTANT 0x4000
     #define CONSTEXP (CONSTANT | 3)
@@ -645,7 +645,7 @@ vmalloc()。请参考API文档以获取有关它们的详细信息。
 
 传递结构体大小的首选形式是这样的：
 
-.. code:: c
+.. code-block:: c
 
     p = kmalloc(sizeof(*p), ...);
 
@@ -711,13 +711,13 @@ NULL或者ERR_PTR机制来报告错误。
 头文件include/linux/kernel.h包含了一些宏，你应该使用它们，而不要自己写一些它们的
 变种。比如，如果你需要计算一个数组的长度，使用这个宏
 
-.. code:: c
+.. code-block:: c
 
     #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
 类似的，如果你要计算某结构体成员的大小，使用
 
-.. code:: c
+.. code-block:: c
 
     #define FIELD_SIZEOF(t, f) (sizeof(((t*)0)->f))
 
@@ -738,7 +738,7 @@ NULL或者ERR_PTR机制来报告错误。
 
 或者这样的：
 
-.. code:: c
+.. code-block:: c
 
     /*
     Local Variables:
@@ -748,7 +748,7 @@ NULL或者ERR_PTR机制来报告错误。
 
 Vim能够解释这样的标记：
 
-.. code:: c
+.. code-block:: c
 
     /* vim:set sw=8 noet */
 
