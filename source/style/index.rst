@@ -56,7 +56,6 @@ Linux内核代码风格
         break;
     }
 
-
 不要把多个语句放在一行里，除非你有什么东西要隐藏：
 
 .. code:: c
@@ -714,13 +713,13 @@ NULL或者ERR_PTR机制来报告错误。
 
 .. code:: c
 
-  #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
+    #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 
 类似的，如果你要计算某结构体成员的大小，使用
 
 .. code:: c
 
-  #define FIELD_SIZEOF(t, f) (sizeof(((t*)0)->f))
+    #define FIELD_SIZEOF(t, f) (sizeof(((t*)0)->f))
 
 还有可以做严格的类型检查的min()和max()宏，如果你需要可以使用它们。你可以自己看看
 那个头文件里还定义了什么你可以拿来用的东西，如果有定义的话，你就不应在你的代码里
@@ -739,7 +738,7 @@ NULL或者ERR_PTR机制来报告错误。
 
 或者这样的：
 
-.. code:: cl
+.. code:: c
 
     /*
     Local Variables:
@@ -749,7 +748,7 @@ NULL或者ERR_PTR机制来报告错误。
 
 Vim能够解释这样的标记：
 
-.. code:: vim
+.. code:: c
 
     /* vim:set sw=8 noet */
 
