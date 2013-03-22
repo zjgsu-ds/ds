@@ -15,6 +15,7 @@
    :glob:
 
    chap*/index
+   lab/index
 
 相关资料
 ========
