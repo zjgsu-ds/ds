@@ -426,7 +426,7 @@ Linux的注释风格是C89 ``/* ... */`` 风格。不要使用C99风格 ``// ...
 
 对于遍布源码树的所有Kconfig*配置文件来说，它们缩进方式与C代码相比有所不同。紧挨在 ``config`` 定义下面的行缩进一个制表符，帮助信息则再多缩进2个空格。比如：
 
-.. code:: kconfig
+::
 
     config AUDIT
         bool "Auditing support"
@@ -439,7 +439,7 @@ Linux的注释风格是C89 ``/* ... */`` 风格。不要使用C99风格 ``// ...
 
 而那些危险的功能（比如某些文件系统的写支持）应该在它们的提示字符串里显著的声明这一点：
 
-.. code:: kconfig
+::
 
     config ADFS_FS_RW
         bool "ADFS write support (DANGEROUS)"
