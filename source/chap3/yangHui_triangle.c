@@ -1,4 +1,3 @@
-
 #include "stdio.h"
 #include "stdlib.h"
 
@@ -16,7 +15,7 @@ int DeQueue(struct queue_container *s, elemType *b);
 int HeadQueue(struct queue_container *s, elemType *b);
 void PrintYangHuiTriangle(int n);
 
-void main()
+int main()
 {
     int row = 0;
     char yes;
@@ -26,22 +25,19 @@ void main()
         printf("Please Input Row of YangHui Triangle:");
         scanf("%d", &row);
 
-        system("cls");
         PrintYangHuiTriangle(row);
 
         // 是否继续
         printf("Continue? (Y/N)");
-        yes = getch();
+        yes = getchar();
         printf("\n");
 
         if(yes != 'y' && yes != 'Y') {
             break;
         }
-
-        system("cls");
     }
 
-    return;
+    return 0;
 }
 
 void PrintYangHuiTriangle(int n)

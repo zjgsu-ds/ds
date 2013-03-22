@@ -1,9 +1,8 @@
-
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #define maxLen 100
-typedef int elemType;
+typedef double elemType;
 struct queue_container {
     elemType data[maxLen];
     int front, rear;
@@ -15,7 +14,7 @@ int EnQueue(struct queue_container *s,  elemType b);
 int DeQueue(struct queue_container *s, elemType *b);
 int HeadQueue(struct queue_container *s, elemType *b);
 
-void main()
+int main()
 {
     elemType b;
 
@@ -30,9 +29,9 @@ void main()
     EnQueue(&s, b);
 
     // 出队头数据
-    DeQueue();
+    DeQueue(&s, &b);
 
-    return;
+    return 0;
 }
 
 void InitQueue(struct queue_container *s)

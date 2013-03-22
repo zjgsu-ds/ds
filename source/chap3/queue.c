@@ -1,5 +1,4 @@
-
-#include "stdio.h"
+#include <stdio.h>
 
 const int maxLen = 100;
 typedef float elemType;
@@ -12,7 +11,7 @@ void InitQueue(struct queue_container *s);
 void EnQueue(struct queue_container *s,  elemType b);
 void DeQueue(struct queue_container *s);
 
-void main()
+int main()
 {
     elemType b;
 
@@ -27,9 +26,9 @@ void main()
     EnQueue(&s, b);
 
     // 出队头数据
-    DeQueue();
+    DeQueue(&s);
 
-    return;
+    return 0;
 }
 
 
