@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int maxLen = 100;
 typedef float elemType;
 struct data_container {
     elemType *pData;
@@ -25,7 +24,7 @@ int main()
     struct data_container s;
 
     /* 初始化容器空间 */
-    init(&s, maxLen);
+    init(&s, 10);
 
     /* 在第i个位置插入一个数b */
     i = 1;

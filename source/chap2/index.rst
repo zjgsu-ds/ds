@@ -15,7 +15,24 @@
 作业参考答案
 ============
 
-TBD
+* A
+    :download:`数组实现 <A_array.c>`
+    :download:`链表实现 <A_list.c>`
+* B
+    :download:`数组实现 <B_array.c>`
+    :download:`链表实现 <B_list.c>`
+* C
+    :download:`数组实现 <C_array.c>`
+    :download:`链表实现 <C_list.c>`
+* D
+    :download:`链表实现 <D_list.c>`
+* E
+    :download:`数组实现 <E_array.c>`
+    :download:`链表实现 <E_list.c>`
+* F
+    :download:`数组实现 <F_array.c>`
+    :download:`链表实现 <F_list.c>`
+
 
 代码下载
 ========
@@ -34,5 +51,3 @@ TBD
 * :download:`集合并的链表实现 <Union_linkList.c>`
 * :download:`多项式加法 <polynomial_operation.c>`
 
-FAQ
-===
