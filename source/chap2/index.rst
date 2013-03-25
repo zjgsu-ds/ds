@@ -92,6 +92,14 @@
 
 .. code-block:: c
 
+    struct data_node* push_front(struct data_listcontainer* s, struct data_node* p) {
+        struct data_node* tmp = p->next;
+        p->next = s->head->next;
+        s->head->next = p;
+
+        return tmp;
+    }
+
     void merge(struct data_listcontainer *s, struct data_listcontainer *t)
     {
         struct data_node *p = s->head->next;
