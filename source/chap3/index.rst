@@ -8,6 +8,17 @@
 * :download:`栈 <chap3_stack.ppt>`
 * :download:`队列 <chap3_queue.ppt>`
 
+作业
+=====
+
+具体见 `ACM竞赛平台 <http://acm.zjgsu.edu.cn/JudgeOnline/contest.php?cid=1596>`_
+
+作业参考答案
+============
+
+竞赛结束后公布.
+
+
 可视化演示
 ==========
 
