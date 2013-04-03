@@ -7,6 +7,7 @@ struct data_container {
     int n;
 };
 
+void init(struct data_container* s);
 void insert(struct data_container *s, int i, int b);
 void del(struct data_container *s, int i);
 int search(struct data_container *s, int b);
@@ -17,6 +18,8 @@ int main()
 
     /* 一个数据存储空间容器 */
     struct data_container s;
+
+    init(&s);
 
     /* 在第i个位置插入一个数b */
     i = 1;
@@ -42,6 +45,11 @@ int main()
         printf("%d found\n", b);
 
     return 0;
+}
+
+void init(struct data_container* s)
+{
+    s->n = 0;
 }
 
 /* 在第i个位置插入一个数b */
