@@ -150,10 +150,10 @@ void post_traverse(struct TreeNode *root)
 {
     if(root != NULL){ // 一棵非空的二叉树
         // 后序遍历左子树
-        prior_traverse(root->lchild);
+        post_traverse(root->lchild);
 
         // 后序遍历右子树
-        prior_traverse(root->rchild);
+        post_traverse(root->rchild);
 
         // 访问根节点
         printf("%d ", root->data);
