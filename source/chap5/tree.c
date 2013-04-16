@@ -1,237 +1,162 @@
+#include <stdio.h>
+#include <stdlib.h>
 
-#include "stdio.h"
-#include "stdlib.h"
-
-typedef int elemType;
-struct biTree_node
+typedef int ElemType;
+struct TreeNode
 {
-	elemType data;
-	struct biTree_node *lchild, *rchild;
-};
-struct biTree_container
-{
-	struct biTree_node *root;
+    ElemType data;
+    struct TreeNode *lchild, *rchild;
 };
 
-void InitBiTree(struct biTree_container *pTree);
-void CreateBiTree(struct biTree_container *pTree);
-void InsertLeftNode(struct biTree_node *q, elemType x);
-int TreeNodeNumber(struct biTree_container *pTree);
-int LeafNodeNumber(struct biTree_container *pTree);
-int TreeDepth(struct biTree_container *pTree);
+struct TreeNode* CreateBiTree();
+void InsertLeftNode(struct TreeNode *q, ElemType x);
+int TreeNodeNumber(struct TreeNode *root);
+int LeafNodeNumber(struct TreeNode *root);
+int TreeDepth(struct TreeNode *root);
 
-// ±éÀú¶þ²æÊ÷
-void MidTraverse(struct biTree_container *pTree);
-void PriorTraverse(struct biTree_container *pTree);
-void PostTraverse(struct biTree_container *pTree);
+// éåŽ†äºŒå‰æ ‘
+void MidTraverse(struct TreeNode *root);
+void PriorTraverse(struct TreeNode *root);
+void PostTraverse(struct TreeNode *root);
 
-void main()
+int main()
 {
-	// Ò»¿Ã¶þ²æÊ÷ÈÝÆ÷
-	struct biTree_container tree;
+    // ä¸€æ£µäºŒå‰æ ‘å®¹å™¨
+    struct TreeNode* root = NULL;
 
-	// ³õÊ¼»¯¸ÃÈÝÆ÷
-	InitBiTree(&tree);
+    // æž„å»ºè¯¥äºŒå‰æ ‘:ä¾æ®æ ‘å½¢å…³ç³»æŠŠæ•°æ®æ”¾å…¥å®¹å™¨ä¸­
+    root = CreateBiTree();
 
-	// ¹¹½¨¸Ã¶þ²æÊ÷:ÒÀ¾ÝÊ÷ÐÎ¹ØÏµ°ÑÊý¾Ý·ÅÈëÈÝÆ÷ÖÐ
-	CreateBiTree(&tree);
+    // æ’å…¥ä¸€ä¸ªæ•°,ä½œä¸ºæ ¹ç»“ç‚¹çš„å·¦å­©å­
+    InsertLeftNode(root, 5);
 
-	// ²åÈëÒ»¸öÊý,×÷Îª¸ù½áµãµÄ×óº¢×Ó
-	InsertLeftNode(tree.root, 5);
+    // è®¡ç®—æ ‘çš„ç»“ç‚¹ä¸ªæ•°
+    printf("The number of tree nodes is: %d\n", TreeNodeNumber(root));
 
-	// ¼ÆËãÊ÷µÄ½áµã¸öÊý
-	printf("The number of tree nodes is: %d\n", TreeNodeNumber(&tree));
+    // è®¡ç®—æ ‘çš„å¶å­ç»“ç‚¹æ•°
+    printf("The number of leaf nodes is: %d\n", LeafNodeNumber(root));
 
-	// ¼ÆËãÊ÷µÄÒ¶×Ó½áµãÊý
-	printf("The number of leaf nodes is: %d\n", LeafNodeNumber(&tree));
+    // è®¡ç®—æ ‘çš„æ·±åº¦
+    printf("The depth of the tree is: %d\n", TreeDepth(root));
 
-	// ¼ÆËãÊ÷µÄÉî¶È
-	printf("The depth of the tree is: %d\n", TreeDepth(&tree));
-
-	return;
+    return 0;
 }
 
-void InitBiTree(struct biTree_container *pTree)
+struct TreeNode* CreateBiTree()
 {
-	// ³õÊ¼»¯ÎªÒ»¿Ã¿ÕµÄ¶þ²æÊ÷:¸ù½áµãÎª¿Õ
-	pTree->root = 0;
+    // åˆ›å»ºä¸€æ£µäºŒå‰æ ‘
+    ElemType b;
+    struct TreeNode *root;
+    struct TreeNode *lchild, *rchild;
+
+    // æŽ¥æ”¶ç”¨æˆ·çš„è¾“å…¥ä½œä¸ºæ ¹(å¦‚æžœè¾“å…¥ä¸ºé›¶,åˆ™ä¸ºç©ºæ ‘)
+    scanf("%d", &b);
+    if(b == 0)
+        return NULL;
+
+    // å»ºç«‹äºŒå‰æ ‘çš„æ ¹
+    root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+    root->data = b;
+
+    // åˆ›å»ºå·¦å³å­æ ‘
+    lchild = CreateBiTree();
+    rchild = CreateBiTree();
+
+    return root;
 }
 
-void CreateBiTree(struct biTree_container *pTree)
+void InsertLeftNode(struct TreeNode *root, ElemType x)
 {
-	// ´´½¨Ò»¿Ã¶þ²æÊ÷
-	elemType b;
-	struct biTree_node *root;
-	struct biTree_container ltree, rtree;
+    // æ’å…¥æ•°xä½œä¸ºqçš„å·¦å­©å­ç»“ç‚¹
+    struct TreeNode *p;
 
-	// ½ÓÊÕÓÃ»§µÄÊäÈë×÷Îª¸ù(Èç¹ûÊäÈëÎªÁã,ÔòÎª¿ÕÊ÷)
-	scanf("%d", &b);
-	if(b == 0)
-	{
-		pTree->root = 0;
-		return;
-	}
+    // ä¸ºxæ–°å»ºä¸€ä¸ªç»“ç‚¹
+    p = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+    p->data = x;
 
-	// ½¨Á¢¶þ²æÊ÷µÄ¸ù
-	root = (struct biTree_node *)malloc(sizeof(struct biTree_node));
-	root->data = b;
-	pTree->root = root;
+    // æŠŠqçš„å·¦å­æ ‘ä½œä¸ºpçš„å·¦å­æ ‘,pçš„å³å­æ ‘ä¸ºç©º
+    p->lchild = root->lchild;
+    p->rchild = NULL;
 
-	// ´´½¨×óÓÒ×ÓÊ÷
-	CreateBiTree(&ltree);
-	CreateBiTree(&rtree);
+    // æŠŠæ–°å»ºç»“ç‚¹pä½œä¸ºqçš„å·¦å­©å­
+    root->lchild = p;
 
-	// ½¨Á¢¸ùÓë×óÓÒ×ÓÊ÷ÁªÏµ
-	root->lchild = ltree.root;
-	root->rchild = rtree.root;
-	
-	return;
+    return;
 }
 
-void InsertLeftNode(struct biTree_node *q, elemType x)
+int TreeNodeNumber(struct TreeNode *root)
 {
-	// ²åÈëÊýx×÷ÎªqµÄ×óº¢×Ó½áµã
-	struct biTree_node *p;
-
-	// ÎªxÐÂ½¨Ò»¸ö½áµã
-	p = (struct biTree_node *)malloc(sizeof(struct biTree_node));
-	p->data = x;
-
-	// °ÑqµÄ×ó×ÓÊ÷×÷ÎªpµÄ×ó×ÓÊ÷,pµÄÓÒ×ÓÊ÷Îª¿Õ
-	p->lchild = q->lchild;
-	p->rchild = 0;
-
-	// °ÑÐÂ½¨½áµãp×÷ÎªqµÄ×óº¢×Ó
-	q->lchild = p;
-
-	return;
+    // ä¸ºä¸€æ£µç©ºæ ‘
+    if(root == NULL)
+        return 0;
+    else
+        return 1 + TreeNodeNumber(root->lchild) + TreeNodeNumber(root->rchild);
 }
 
-int TreeNodeNumber(struct biTree_container *pTree)
+int LeafNodeNumber(struct TreeNode *root)
 {
-	// ¼ÆËãÊ÷µÄÒ¶×Ó½áµã¸öÊý
-	struct biTree_container ltree, rtree;
-
-	// ÎªÒ»¿Ã¿ÕÊ÷
-	if(pTree->root == 0)
-	{
-		return 0;
-	}
-	else
-	{
-		ltree.root = pTree->root->lchild;
-		rtree.root = pTree->root->rchild;
-
-		return 1 + TreeNodeNumber(&ltree) + TreeNodeNumber(&rtree); 
-	}
+    if(root == NULL)
+        return 0;
+    else if(root->lchild == NULL && root->rchild == NULL)
+        return 1;
+    else
+        return LeafNodeNumber(root->lchild) + LeafNodeNumber(root->rchild);
 }
 
-int LeafNodeNumber(struct biTree_container *pTree)
+int max(int x, int y)
 {
-	// ¼ÆËãÊ÷µÄÒ¶×Ó½áµã¸öÊý
-	struct biTree_container ltree, rtree;
-
-	// ÎªÒ»¿Ã¿ÕÊ÷
-	if(pTree->root == 0)
-	{
-		return 0;
-	}
-
-	// ¸ùÎªÒ¶×Ó½áµã
-	if(pTree->root->lchild == 0 && pTree->root->rchild == 0)
-	{
-		return 1;
-	}
-	else
-	{
-		ltree.root = pTree->root->lchild;
-		rtree.root = pTree->root->rchild;
-
-		return LeafNodeNumber(&ltree) + LeafNodeNumber(&rtree); 
-	}
+    return x > y ? x : y;
 }
 
-int TreeDepth(struct biTree_container *pTree)
+int TreeDepth(struct TreeNode *root)
 {
-	// ¼ÆËã¶þ²æÊ÷µÄÉî¶È
-	struct biTree_container ltree, rtree;
-	int ldepth, rdepth;
-
-	// ÎªÒ»¿Ã¿ÕÊ÷
-	if(pTree->root == 0)
-	{
-		return 0;
-	}
-	else{
-		ltree.root = pTree->root->lchild;
-		rtree.root = pTree->root->rchild;
-
-		ldepth = TreeDepth(&ltree);
-		rdepth = TreeDepth(&rtree);
-
-		return (ldepth >= rdepth ? ldepth+1 : rdepth+1);
-	}
+    if(root == NULL)
+        return 0;
+    else
+        return 1 + max(TreeDepth(root->lchild), TreeDepth(root->rchild));
 }
 
-void MidTraverse(struct biTree_container *pTree)
+// ä¸­åºéåŽ†äºŒå‰æ ‘
+void MidTraverse(struct TreeNode *root)
 {
-	// ÖÐÐò±éÀú¶þ²æÊ÷
-	struct biTree_container ltree, rtree;
 
-	if(pTree->root != 0){ // Ò»¿Ã·Ç¿ÕµÄ¶þ²æÊ÷
-		// ÖÐÐò±éÀú×ó×ÓÊ÷
-		ltree.root = pTree->root->lchild;
-		MidTraverse( &ltree );
+    if(root != NULL){ // ä¸€æ£µéžç©ºçš„äºŒå‰æ ‘
+        // ä¸­åºéåŽ†å·¦å­æ ‘
+        MidTraverse(root->lchild);
 
-		// ·ÃÎÊ¸ù½Úµã
-		printf("%d ", pTree->root->data);
+        // è®¿é—®æ ¹èŠ‚ç‚¹
+        printf("%d ", root->data);
 
-		// ÖÐÐò±éÀúÓÒ×ÓÊ÷
-		rtree.root = pTree->root->rchild;
-		MidTraverse( &rtree );
-	}
-
-	return;
+        // ä¸­åºéåŽ†å³å­æ ‘
+        MidTraverse(root->rchild);
+    }
 }
 
-void PriorTraverse(struct biTree_container *pTree)
+// å…ˆåºéåŽ†äºŒå‰æ ‘
+void PriorTraverse(struct TreeNode *root)
 {
-	// ÏÈÐò±éÀú¶þ²æÊ÷
-	struct biTree_container ltree, rtree;
+    if(root != NULL){ // ä¸€æ£µéžç©ºçš„äºŒå‰æ ‘
+        // è®¿é—®æ ¹èŠ‚ç‚¹
+        printf("%d ", root->data);
 
-	if(pTree->root != 0){ // Ò»¿Ã·Ç¿ÕµÄ¶þ²æÊ÷
-		// ·ÃÎÊ¸ù½Úµã
-		printf("%d ", pTree->root->data);
+        // å…ˆåºéåŽ†å·¦å­æ ‘
+        PriorTraverse(root->lchild);
 
-		// ÏÈÐò±éÀú×ó×ÓÊ÷
-		ltree.root = pTree->root->lchild;
-		PriorTraverse( &ltree );
-
-		// ÏÈÐò±éÀúÓÒ×ÓÊ÷
-		rtree.root = pTree->root->rchild;
-		PriorTraverse( &rtree );
-	}
-
-	return;
+        // å…ˆåºéåŽ†å³å­æ ‘
+        PriorTraverse(root->rchild);
+    }
 }
 
-void PostTraverse(struct biTree_container *pTree)
+void PostTraverse(struct TreeNode *root)
 {
-	// ºóÐò±éÀú¶þ²æÊ÷
-	struct biTree_container ltree, rtree;
+    if(root != NULL){ // ä¸€æ£µéžç©ºçš„äºŒå‰æ ‘
+        // åŽåºéåŽ†å·¦å­æ ‘
+        PriorTraverse(root->lchild);
 
-	if(pTree->root != 0){ // Ò»¿Ã·Ç¿ÕµÄ¶þ²æÊ÷
-		// ºóÐò±éÀú×ó×ÓÊ÷
-		ltree.root = pTree->root->lchild;
-		PriorTraverse( &ltree );
+        // åŽåºéåŽ†å³å­æ ‘
+        PriorTraverse(root->rchild);
 
-		// ºóÐò±éÀúÓÒ×ÓÊ÷
-		rtree.root = pTree->root->rchild;
-		PriorTraverse( &rtree );
-
-		// ·ÃÎÊ¸ù½Úµã
-		printf("%d ", pTree->root->data);
-	}
-
-	return;
+        // è®¿é—®æ ¹èŠ‚ç‚¹
+        printf("%d ", root->data);
+    }
 }
