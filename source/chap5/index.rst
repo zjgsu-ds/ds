@@ -12,6 +12,11 @@
 
 :download:`tree.c`
 
+作业
+====
+
+见 `ACM平台 <http://acm.zjgsu.edu.cn/JudgeOnline/contest.php?cid=1641>`_
+
 可视化演示
 ==========
 
