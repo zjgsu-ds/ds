@@ -9,15 +9,15 @@ struct TreeNode
 };
 
 struct TreeNode* CreateBiTree();
-void InsertLeftNode(struct TreeNode *q, ElemType x);
-int TreeNodeNumber(struct TreeNode *root);
-int LeafNodeNumber(struct TreeNode *root);
-int TreeDepth(struct TreeNode *root);
+void insert_left_node(struct TreeNode *q, ElemType x);
+int tree_node_number(struct TreeNode *root);
+int leaf_node_number(struct TreeNode *root);
+int tree_depth(struct TreeNode *root);
 
 // 遍历二叉树
-void MidTraverse(struct TreeNode *root);
-void PriorTraverse(struct TreeNode *root);
-void PostTraverse(struct TreeNode *root);
+void mid_traverse(struct TreeNode *root);
+void prior_traverse(struct TreeNode *root);
+void post_traverse(struct TreeNode *root);
 
 int main()
 {
@@ -28,16 +28,16 @@ int main()
     root = CreateBiTree();
 
     // 插入一个数,作为根结点的左孩子
-    InsertLeftNode(root, 5);
+    insert_left_node(root, 5);
 
     // 计算树的结点个数
-    printf("The number of tree nodes is: %d\n", TreeNodeNumber(root));
+    printf("The number of tree nodes is: %d\n", tree_node_number(root));
 
     // 计算树的叶子结点数
-    printf("The number of leaf nodes is: %d\n", LeafNodeNumber(root));
+    printf("The number of leaf nodes is: %d\n", leaf_node_number(root));
 
     // 计算树的深度
-    printf("The depth of the tree is: %d\n", TreeDepth(root));
+    printf("The depth of the tree is: %d\n", tree_depth(root));
 
     return 0;
 }
@@ -47,7 +47,6 @@ struct TreeNode* CreateBiTree()
     // 创建一棵二叉树
     ElemType b;
     struct TreeNode *root;
-    struct TreeNode *lchild, *rchild;
 
     // 接收用户的输入作为根(如果输入为零,则为空树)
     scanf("%d", &b);
@@ -59,13 +58,13 @@ struct TreeNode* CreateBiTree()
     root->data = b;
 
     // 创建左右子树
-    lchild = CreateBiTree();
-    rchild = CreateBiTree();
+    root->lchild = CreateBiTree();
+    root->rchild = CreateBiTree();
 
     return root;
 }
 
-void InsertLeftNode(struct TreeNode *root, ElemType x)
+void insert_left_node(struct TreeNode *root, ElemType x)
 {
     // 插入数x作为q的左孩子结点
     struct TreeNode *p;
@@ -84,23 +83,23 @@ void InsertLeftNode(struct TreeNode *root, ElemType x)
     return;
 }
 
-int TreeNodeNumber(struct TreeNode *root)
+int tree_node_number(struct TreeNode *root)
 {
     // 为一棵空树
     if(root == NULL)
         return 0;
     else
-        return 1 + TreeNodeNumber(root->lchild) + TreeNodeNumber(root->rchild);
+        return 1 + tree_node_number(root->lchild) + tree_node_number(root->rchild);
 }
 
-int LeafNodeNumber(struct TreeNode *root)
+int leaf_node_number(struct TreeNode *root)
 {
     if(root == NULL)
         return 0;
     else if(root->lchild == NULL && root->rchild == NULL)
         return 1;
     else
-        return LeafNodeNumber(root->lchild) + LeafNodeNumber(root->rchild);
+        return leaf_node_number(root->lchild) + leaf_node_number(root->rchild);
 }
 
 int max(int x, int y)
@@ -108,53 +107,53 @@ int max(int x, int y)
     return x > y ? x : y;
 }
 
-int TreeDepth(struct TreeNode *root)
+int tree_depth(struct TreeNode *root)
 {
     if(root == NULL)
         return 0;
     else
-        return 1 + max(TreeDepth(root->lchild), TreeDepth(root->rchild));
+        return 1 + max(tree_depth(root->lchild), tree_depth(root->rchild));
 }
 
 // 中序遍历二叉树
-void MidTraverse(struct TreeNode *root)
+void mid_traverse(struct TreeNode *root)
 {
 
     if(root != NULL){ // 一棵非空的二叉树
         // 中序遍历左子树
-        MidTraverse(root->lchild);
+        mid_traverse(root->lchild);
 
         // 访问根节点
         printf("%d ", root->data);
 
         // 中序遍历右子树
-        MidTraverse(root->rchild);
+        mid_traverse(root->rchild);
     }
 }
 
 // 先序遍历二叉树
-void PriorTraverse(struct TreeNode *root)
+void prior_traverse(struct TreeNode *root)
 {
     if(root != NULL){ // 一棵非空的二叉树
         // 访问根节点
         printf("%d ", root->data);
 
         // 先序遍历左子树
-        PriorTraverse(root->lchild);
+        prior_traverse(root->lchild);
 
         // 先序遍历右子树
-        PriorTraverse(root->rchild);
+        prior_traverse(root->rchild);
     }
 }
 
-void PostTraverse(struct TreeNode *root)
+void post_traverse(struct TreeNode *root)
 {
     if(root != NULL){ // 一棵非空的二叉树
         // 后序遍历左子树
-        PriorTraverse(root->lchild);
+        prior_traverse(root->lchild);
 
         // 后序遍历右子树
-        PriorTraverse(root->rchild);
+        prior_traverse(root->rchild);
 
         // 访问根节点
         printf("%d ", root->data);
