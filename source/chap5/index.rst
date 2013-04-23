@@ -17,6 +17,11 @@
 
 见 `ACM平台 <http://acm.zjgsu.edu.cn/JudgeOnline/contest.php?cid=1641>`_
 
+作业参考答案
+============
+
+A. :download:`chap5_A.c`
+
 可视化演示
 ==========
 
