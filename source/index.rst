@@ -15,6 +15,8 @@
 相关资料
 ========
 
+* :download:`VC调试方法 <debug.doc>`
+
 .. toctree::
    :maxdepth: 1
 
