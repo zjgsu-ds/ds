@@ -21,6 +21,12 @@
 ============
 
 A. :download:`chap5_A.c`
+B. :download:`chap5_B.c`
+C. :download:`chap5_C.c`
+D. :download:`chap5_D.c`
+E. :download:`chap5_E.c`
+F. :download:`chap5_F.c`
+G. :download:`chap5_G.c`
 
 可视化演示
 ==========
