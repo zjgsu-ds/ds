@@ -21,6 +21,8 @@ int main()
     for (i = 0; i < n; i++) {
         nodes[i] = (struct TreeNode *)malloc(sizeof(struct TreeNode));
         scanf("%d", &nodes[i]->data);
+        nodes[i]->lchild = NULL;
+        nodes[i]->rchild = NULL;
     }
 
     for (i = n; i > 1; i--)

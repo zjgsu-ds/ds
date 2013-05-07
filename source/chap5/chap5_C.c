@@ -52,6 +52,8 @@ struct TreeNode* insert_node(struct TreeNode *root, ElemType x)
         struct TreeNode *p;
         p = (struct TreeNode *)malloc(sizeof(struct TreeNode));
         p->data = x;
+        p->lchild = NULL;
+        p->rchild = NULL;
 
         return p;
     }
