@@ -1,12 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
 
-#include "stdio.h"
-#include "stdlib.h"
-
-struct graph_container
-{
-	char *pVertex;
-	float *pEdge;
-	int n;
+struct graph_container {
+    char *pVertex;
+    float *pEdge;
+    int n;
 };
 
 void InitGraph(struct graph_container *pGraph);
@@ -14,92 +12,87 @@ void CreateGraph(struct graph_container *pGraph);
 int VertexDegree(struct graph_container *pGraph, int i);
 int GraphEdgeNumber(struct graph_container *pGraph);
 
-void main()
+int main()
 {
-	// Ò»¸öÍ¼ÈİÆ÷
-	struct graph_container g;
+    // ä¸€ä¸ªå›¾å®¹å™¨
+    struct graph_container g;
 
-	int iV = 1;
+    int iV = 1;
 
-	// ³õÊ¼»¯¸ÃÈİÆ÷
-	InitGraph(&g);
+    // åˆå§‹åŒ–è¯¥å®¹å™¨
+    InitGraph(&g);
 
-	// ¹¹½¨Ò»¸öÍ¼:ÒÀ¾İÍ¼½á¹¹°ÑÊı¾İ·ÅÈëÈİÆ÷ÖĞ
-	CreateGraph(&g);
+    // æ„å»ºä¸€ä¸ªå›¾:ä¾æ®å›¾ç»“æ„æŠŠæ•°æ®æ”¾å…¥å®¹å™¨ä¸­
+    CreateGraph(&g);
 
-	// ÇóµÚÒ»¸ö¶¥µãµÄ¶È
-	printf("The degree of vertex %d is: %d\n", iV, VertexDegree(&g, iV));
-	
-	// ÇóÍ¼ÖĞ±ßµÄÌõÊı
-	printf("The number of graph edges is: %d\n", GraphEdgeNumber(&g));
+    // æ±‚ç¬¬ä¸€ä¸ªé¡¶ç‚¹çš„åº¦
+    printf("The degree of vertex %d is: %d\n", iV, VertexDegree(&g, iV));
 
-	return;
+    // æ±‚å›¾ä¸­è¾¹çš„æ¡æ•°
+    printf("The number of graph edges is: %d\n", GraphEdgeNumber(&g));
+
+    return 0;
 }
 
 void InitGraph(struct graph_container *pGraph)
 {
-	pGraph->pVertex = 0;
-	pGraph->pEdge = 0;
-	pGraph->n = 0;
+    pGraph->pVertex = 0;
+    pGraph->pEdge = 0;
+    pGraph->n = 0;
 }
 
 void CreateGraph(struct graph_container *pGraph)
 {
-	int i, j, k, e, n;
-	float w;
-	
-	// ¶ÁÈëÍ¼ÖĞ¶¥µãÊıºÍ±ßÊı
-	scanf("%d%d", &n, &e); 
+    int i, j, k, e, n;
+    float w;
 
-	// ·ÖÅäÍ¼µÄÊı¾İ´æ´¢¿Õ¼ä
-	pGraph->n = n;
-	pGraph->pVertex = (char *)malloc(sizeof(char)*n);
-	pGraph->pEdge = (float *)malloc(sizeof(float)*n*n);
+    // è¯»å…¥å›¾ä¸­é¡¶ç‚¹æ•°å’Œè¾¹æ•°
+    scanf("%d%d\n", &n, &e);
 
-	// ³õÊ¼»¯ÁÚ½Ó¾ØÕó
-	for(i = 0; i < n; i ++)
-		for(j = 0; j < n; j ++)
-			pGraph->pEdge[i*n+j] = 0;
+    // åˆ†é…å›¾çš„æ•°æ®å­˜å‚¨ç©ºé—´
+    pGraph->n = n;
+    pGraph->pVertex = (char *)malloc(sizeof(char)*n);
+    pGraph->pEdge = (float *)malloc(sizeof(float)*n*n);
 
-	// ¶ÁÈë¶¥µãÊı¾İ
-	for(i = 0; i < n; i ++)
-		pGraph->pVertex[i] = getchar();
-	
-	// ¶ÁÈë±ß»òÆäÈ¨Öµ
-	for(k = 0; k < e; k ++)
-	{
-		scanf("%d%d%f", &i, &j, &w);
-		pGraph->pEdge[i*n+j] = w;
-	}
+    // åˆå§‹åŒ–é‚»æ¥çŸ©é˜µ
+    for(i = 0; i < n; i ++)
+        for(j = 0; j < n; j ++)
+            pGraph->pEdge[i*n+j] = 0;
+
+    // è¯»å…¥é¡¶ç‚¹æ•°æ®
+    for(i = 0; i < n; i ++)
+        pGraph->pVertex[i] = getchar();
+
+    // è¯»å…¥è¾¹æˆ–å…¶æƒå€¼
+    for(k = 0; k < e; k ++) {
+        scanf("%d%d%f", &i, &j, &w);
+        pGraph->pEdge[i*n+j] = w;
+    }
 }
 
 int VertexDegree(struct graph_container *pGraph, int i)
 {
-	int degree = 0, k;
+    int degree = 0, k;
 
-	for(k = 0; k < pGraph->n; k ++)
-	{
-		if(pGraph->pEdge[(i-1)*pGraph->n + k] != 0)
-		{
-			degree ++;
-		}
-	}
+    for(k = 0; k < pGraph->n; k ++) {
+        if(pGraph->pEdge[(i-1)*pGraph->n + k] != 0) {
+            degree ++;
+        }
+    }
 
-	return degree;
+    return degree;
 }
 
 int GraphEdgeNumber(struct graph_container *pGraph)
 {
-	int e = 0, i;
+    int e = 0, i;
 
-	for(i = 0; i < pGraph->n*pGraph->n; i ++)
-	{
-		if(pGraph->pEdge[i] != 0)
-		{
-			e ++;
-		}
-	}
+    for(i = 0; i < pGraph->n*pGraph->n; i ++) {
+        if(pGraph->pEdge[i] != 0) {
+            e ++;
+        }
+    }
 
-	return e/2;
+    return e/2;
 }
 
