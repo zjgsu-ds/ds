@@ -61,31 +61,30 @@ int main()
 /* 初始化链表：建立一个头结点 */
 void init(struct data_listcontainer *s)
 {
-    struct data_node *node = 0;
+    struct data_node *node = NULL;
 
     node = (struct data_node *)malloc(sizeof(struct data_node));
-    if(node == 0) {
+    if(node == NULL) {
         printf("memory allocation error\n");
         return;
     }
 
-    node->next = 0;
+    node->next = NULL;
     s->head = node;
-    return;
 }
 
 /* 查找第i个数据 */
 struct data_node* find(struct data_listcontainer* s, int i)
 {
     struct data_node* p = s->head;
-    int j = 0;
+    int current_index = 0;
 
     if (i < 0)
         return NULL;
 
-    while (j < i) {
+    while (current_index < i && p != NULL) {
         p = p->next;
-        ++j;
+        ++current_index;
     }
 
     return p;
@@ -104,7 +103,7 @@ void insert(struct data_listcontainer *s, int i, elemType b)
 
     /* 为b分配一个节点空间 */
     q = (struct data_node *)malloc(sizeof(struct data_node));
-    if(q == 0) {
+    if(q == NULL) {
         printf("memory allocation error\n");
         return;
     }
@@ -113,8 +112,6 @@ void insert(struct data_listcontainer *s, int i, elemType b)
     /* 把新节点插入到第i个数据节点之前 */
     q->next = p->next;
     p->next = q;
-
-    return;
 }
 
 void del(struct data_listcontainer *s, int i)
@@ -139,13 +136,13 @@ int search(struct data_listcontainer *s, elemType b)
     struct data_node *p = s->head->next;
     int j = 1;
 
-    while(p != 0) {
+    while(p != NULL) {
         if(p->data == b) {
             return j;
         }
 
         p = p->next;
-        j ++;
+        j++;
     }
 
     return -1;
@@ -157,11 +154,11 @@ void destroy(struct data_listcontainer *s)
     struct data_node *p = s->head, *q;
 
     /* 释放容器中每一个节点 */
-    while(p != 0) {
+    while(p != NULL) {
         q = p->next; /* 保留下一个节点的地址 */
         free(p);
         p = q;
     }
 
-    s->head = 0;
+    s->head = NULL;
 }
