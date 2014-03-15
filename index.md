@@ -9,7 +9,12 @@ comments: false
 
 1. [绪论](chapters/1)
 2. [线性表](chapters/2)
+3. [栈与队列](chapters/3)
 
+
+## 实验
+
+- [往年题目参考](docs/lab.doc)
 
 ## 网络资源
 
