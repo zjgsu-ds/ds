@@ -23,7 +23,7 @@ int main()
 
     scanf("%d%d", &n, &m);
 
-    /* å¡«å……æ•°ç»„ */
+    /* Ìî³äÊı×é */
     for (i = 1; i <= n; i++)
         insert(&s, i, i);
 
@@ -55,7 +55,7 @@ void init(struct data_container* s)
     s->n = 0;
 }
 
-/* åœ¨ç¬¬iä¸ªä½ç½®å‰æ’å…¥ä¸€ä¸ªæ•°b */
+/* ÔÚµÚi¸öÎ»ÖÃÇ°²åÈëÒ»¸öÊıb */
 void insert(struct data_container *s, int i, elemType b)
 {
     int j;
@@ -69,7 +69,7 @@ void insert(struct data_container *s, int i, elemType b)
     s->n++;
 }
 
-/* åˆ é™¤ç¬¬iä¸ªæ•´æ•° */
+/* É¾³ıµÚi¸öÕûÊı */
 void del(struct data_container *s, int i)
 {
     int j = 0;
@@ -80,7 +80,7 @@ void del(struct data_container *s, int i)
     s->n--;
 }
 
-/* æŸ¥æ‰¾æ•´æ•° b */
+/* ²éÕÒÕûÊı b */
 int search(struct data_container *s, elemType b)
 {
     int j = 0;

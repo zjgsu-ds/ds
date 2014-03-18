@@ -15,17 +15,17 @@ int main()
 {
     elemType b;
 
-    // ä¸€ä¸ªå­˜å‚¨æµ®ç‚¹æ•°æ®çš„å¾ªçŽ¯é˜Ÿåˆ—å®¹å™¨
+    // Ò»¸ö´æ´¢¸¡µãÊý¾ÝµÄÑ­»·¶ÓÁÐÈÝÆ÷
     struct queue_container s;
 
-    // åˆå§‹åŒ–æ ˆå®¹å™¨
+    // ³õÊ¼»¯Õ»ÈÝÆ÷
     InitQueue(&s);
 
-    // åœ¨é˜Ÿå°¾æ”¾å…¥ä¸€ä¸ªæ•°b
+    // ÔÚ¶ÓÎ²·ÅÈëÒ»¸öÊýb
     b = 3.6;
     EnQueue(&s, b);
 
-    // å‡ºé˜Ÿå¤´æ•°æ®
+    // ³ö¶ÓÍ·Êý¾Ý
     DeQueue(&s);
 
     return 0;
@@ -39,7 +39,7 @@ void InitQueue(struct queue_container *s)
 
 void EnQueue(struct queue_container *s,  elemType b)
 {
-    // æŠŠæ•°bæ”¾å…¥é˜Ÿåˆ—
+    // °ÑÊýb·ÅÈë¶ÓÁÐ
     s->data[s->rear] = b;
     s->rear = (s->rear+1) % maxLen;
 
@@ -48,7 +48,7 @@ void EnQueue(struct queue_container *s,  elemType b)
 
 void DeQueue(struct queue_container *s)
 {
-    // åˆ é™¤é˜Ÿå¤´å…ƒç´ 
+    // É¾³ý¶ÓÍ·ÔªËØ
     s->front = (s->front+1) % maxLen;
 }
 

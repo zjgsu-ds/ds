@@ -27,49 +27,49 @@ int main()
     int i;
     char line[128];
 
-    /* ä¸¤ä¸ªå­˜å‚¨ç©ºé—´å®¹å™¨ï¼Œåˆ†åˆ«å­˜æ”¾é›†åˆAå’ŒB */
+    /* Á½¸ö´æ´¢¿Õ¼äÈİÆ÷£¬·Ö±ğ´æ·Å¼¯ºÏAºÍB */
     struct data_listcontainer LA, LB;
 
-    /* åˆå§‹åŒ–ç©ºå®¹å™¨ */
+    /* ³õÊ¼»¯¿ÕÈİÆ÷ */
     init(&LA);
     init(&LB);
 
-    /* è¾“å…¥é›†åˆAçš„æ•°æ® */
-    printf("è¾“å…¥A:\n");
+    /* ÊäÈë¼¯ºÏAµÄÊı¾İ */
+    printf("ÊäÈëA:\n");
     fgets(line, 128, stdin);
     i = 0;
 
     while(line[i] != '\n') {
-        /* è¯»å‡ºlineä¸­çš„æ¯ä¸ªå­—ç¬¦,å¹¶æ’å…¥åˆ°å®¹å™¨çš„æœ«å°¾ */
+        /* ¶Á³ölineÖĞµÄÃ¿¸ö×Ö·û,²¢²åÈëµ½ÈİÆ÷µÄÄ©Î² */
         insert(&LA, i+1, line[i]);
         i++;
     }
 
-    /* è¾“å…¥é›†åˆBçš„æ•°æ® */
-    printf("è¾“å…¥B:\n");
+    /* ÊäÈë¼¯ºÏBµÄÊı¾İ */
+    printf("ÊäÈëB:\n");
     fgets(line, 128, stdin);
     i = 0;
 
     while(line[i] != '\n') {
-        /* è¯»å‡ºlineä¸­çš„æ¯ä¸ªå­—ç¬¦,å¹¶æ’å…¥åˆ°å®¹å™¨çš„æœ«å°¾ */
+        /* ¶Á³ölineÖĞµÄÃ¿¸ö×Ö·û,²¢²åÈëµ½ÈİÆ÷µÄÄ©Î² */
         insert(&LB, i+1, line[i]);
         i++;
     }
 
-    /* åˆå¹¶é›†åˆAå’ŒBï¼Œåˆå¹¶æ•°æ®å­˜åœ¨é›†åˆAä¸­ */
+    /* ºÏ²¢¼¯ºÏAºÍB£¬ºÏ²¢Êı¾İ´æÔÚ¼¯ºÏAÖĞ */
     Union(&LA, &LB);
 
     printf("Result: \n");
     print_list(&LA);
 
-    /* é‡Šæ”¾å®¹å™¨ç©ºé—´ */
+    /* ÊÍ·ÅÈİÆ÷¿Õ¼ä */
     destroy(&LA);
     destroy(&LB);
 
     return 0;
 }
 
-/* å°†æ‰€æœ‰åœ¨LBä¸­å­˜åœ¨è€ŒLAä¸­ä¸å­˜åœ¨çš„æ•°æ®æ’å…¥åˆ°LAä¸­ */
+/* ½«ËùÓĞÔÚLBÖĞ´æÔÚ¶øLAÖĞ²»´æÔÚµÄÊı¾İ²åÈëµ½LAÖĞ */
 void Union(struct data_listcontainer *LA, struct data_listcontainer *LB)
 {
     int nA = Length(LA);
@@ -77,10 +77,10 @@ void Union(struct data_listcontainer *LA, struct data_listcontainer *LB)
     int i;
 
     for(i = 1; i <= nB; i++) {
-        /* è·å¾—å®¹å™¨LBä¸­çš„ç¬¬iä¸ªæ•°æ® */
+        /* »ñµÃÈİÆ÷LBÖĞµÄµÚi¸öÊı¾İ */
         elemType d = getElem(LB, i);
 
-        /* æŠŠæ•°æ®æ’å…¥åˆ°å®¹å™¨LAçš„ç¬¬iä¸ªæ•°æ®ä¹‹å‰ */
+        /* °ÑÊı¾İ²åÈëµ½ÈİÆ÷LAµÄµÚi¸öÊı¾İÖ®Ç° */
         if (search(LA, d) < 0) {
             nA++;
             insert(LA, nA, d);
@@ -90,7 +90,7 @@ void Union(struct data_listcontainer *LA, struct data_listcontainer *LB)
     return;
 }
 
-/* åˆå§‹åŒ–é“¾è¡¨ï¼šå»ºç«‹ä¸€ä¸ªå¤´ç»“ç‚¹ */
+/* ³õÊ¼»¯Á´±í£º½¨Á¢Ò»¸öÍ·½áµã */
 void init(struct data_listcontainer *s)
 {
     struct data_node *node = 0;
@@ -106,7 +106,7 @@ void init(struct data_listcontainer *s)
     return;
 }
 
-/* æŸ¥æ‰¾ç¬¬iä¸ªæ•°æ® */
+/* ²éÕÒµÚi¸öÊı¾İ */
 struct data_node* find(struct data_listcontainer* s, int i)
 {
     struct data_node* p = s->head;
@@ -123,13 +123,13 @@ struct data_node* find(struct data_listcontainer* s, int i)
     return p;
 }
 
-/* æ’å…¥ä¸€ä¸ªæ–°æ•°æ®èŠ‚ç‚¹ */
+/* ²åÈëÒ»¸öĞÂÊı¾İ½Úµã */
 void insert(struct data_listcontainer *s, int i, elemType b)
 {
     struct data_node* p = find(s, i-1);
     struct data_node *q = 0;
 
-    /* ä¸ºbåˆ†é…ä¸€ä¸ªèŠ‚ç‚¹ç©ºé—´ */
+    /* Îªb·ÖÅäÒ»¸ö½Úµã¿Õ¼ä */
     q = (struct data_node *)malloc(sizeof(struct data_node));
     if(q == 0) {
         printf("memory allocation error\n");
@@ -137,30 +137,30 @@ void insert(struct data_listcontainer *s, int i, elemType b)
     }
     q->data = b;
 
-    /* æŠŠæ–°èŠ‚ç‚¹æ’å…¥åˆ°ç¬¬iä¸ªæ•°æ®èŠ‚ç‚¹ä¹‹å‰ */
+    /* °ÑĞÂ½Úµã²åÈëµ½µÚi¸öÊı¾İ½ÚµãÖ®Ç° */
     q->next = p->next;
     p->next = q;
 
     return;
 }
 
-/* åˆ é™¤ç¬¬iä¸ªæ•°æ®èŠ‚ç‚¹ */
+/* É¾³ıµÚi¸öÊı¾İ½Úµã */
 void del(struct data_listcontainer *s, int i)
 {
     struct data_node *p = find(s, i-1);
     struct data_node *q;
     int j = 1;
 
-    /* ä¿®æ”¹æŒ‡é’ˆï¼šæŠŠç¬¬iä¸ªèŠ‚ç‚¹ä»é“¾è¡¨ä¸­ç§»å‡º */
+    /* ĞŞ¸ÄÖ¸Õë£º°ÑµÚi¸ö½Úµã´ÓÁ´±íÖĞÒÆ³ö */
     q = p->next;
     p->next = q->next;
 
-    /* é‡Šæ”¾èŠ‚ç‚¹å†…å­˜ */
+    /* ÊÍ·Å½ÚµãÄÚ´æ */
     free(q);
 }
 
-/* æŸ¥æ‰¾å®¹å™¨ä¸­æ˜¯å¦å­˜åœ¨æ•°b.
-   å¦‚æœå­˜æ”¾,è¿”å›å…¶é¦–æ¬¡å‡ºç°çš„ä½ç½®;å¦åˆ™è¿”å›-1
+/* ²éÕÒÈİÆ÷ÖĞÊÇ·ñ´æÔÚÊıb.
+   Èç¹û´æ·Å,·µ»ØÆäÊ×´Î³öÏÖµÄÎ»ÖÃ;·ñÔò·µ»Ø-1
    */
 int search(struct data_listcontainer *s, elemType b)
 {
@@ -179,14 +179,14 @@ int search(struct data_listcontainer *s, elemType b)
     return -1;
 }
 
-/* æ¸…ç©ºå®¹å™¨ */
+/* Çå¿ÕÈİÆ÷ */
 void destroy(struct data_listcontainer *s)
 {
     struct data_node *p = s->head, *q;
 
-    /* é‡Šæ”¾å®¹å™¨ä¸­æ¯ä¸€ä¸ªèŠ‚ç‚¹ */
+    /* ÊÍ·ÅÈİÆ÷ÖĞÃ¿Ò»¸ö½Úµã */
     while(p != 0) {
-        q = p->next; /* ä¿ç•™ä¸‹ä¸€ä¸ªèŠ‚ç‚¹çš„åœ°å€ */
+        q = p->next; /* ±£ÁôÏÂÒ»¸ö½ÚµãµÄµØÖ· */
         free(p);
         p = q;
     }
@@ -194,7 +194,7 @@ void destroy(struct data_listcontainer *s)
     s->head = 0;
 }
 
-/* è®¡ç®—å®¹å™¨ä¸­çš„æ•°æ®ä¸ªæ•° */
+/* ¼ÆËãÈİÆ÷ÖĞµÄÊı¾İ¸öÊı */
 int Length(struct data_listcontainer *s)
 {
     struct data_node *p= s->head->next;
@@ -208,7 +208,7 @@ int Length(struct data_listcontainer *s)
     return n;
 }
 
-/* æ‰“å°é“¾è¡¨ */
+/* ´òÓ¡Á´±í */
 void print_list(struct data_listcontainer* s)
 {
     struct data_node* p = s->head->next;
@@ -221,7 +221,7 @@ void print_list(struct data_listcontainer* s)
     putchar('\n');
 }
 
-/* è·å¾—å®¹å™¨ä¸­çš„ç¬¬iä¸ªæ•°æ® */
+/* »ñµÃÈİÆ÷ÖĞµÄµÚi¸öÊı¾İ */
 elemType getElem(struct data_listcontainer *s, int i)
 {
     return find(s, i)->data;

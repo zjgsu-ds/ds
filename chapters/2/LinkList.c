@@ -23,27 +23,27 @@ int main()
     int i, j;
     elemType b;
 
-    /* 一个浮点数据存储空间容器 */
+    /* һ���������ݴ洢�ռ����� */
     struct data_listcontainer s;
 
-    /* 初始化容器空间 */
+    /* ��ʼ�������ռ� */
     init(&s);
 
-    /* 在第i个位置前插入一个数b */
+    /* �ڵ�i��λ��ǰ����һ����b */
     i = 1;
     b = 3.6;
     insert(&s, i, b);
 
-    /* 在第i个位置前插入一个数b */
+    /* �ڵ�i��λ��ǰ����һ����b */
     i = 2;
     b = 2.2;
     insert(&s, i, b);
 
-    /* 删除第i个整数 */
+    /* ɾ����i������ */
     i = 2;
     del(&s, i);
 
-    /* 查找数 b */
+    /* ������ b */
     b = 3.6;
     j = search(&s, b);
 
@@ -52,13 +52,13 @@ int main()
     else
         printf("%f found\n", b);
 
-    /* 清空容器空间 */
+    /* ��������ռ� */
     destroy(&s);
 
     return 0;
 }
 
-/* 初始化链表：建立一个头结点 */
+/* ��ʼ������������һ��ͷ��� */
 void init(struct data_listcontainer *s)
 {
     struct data_node *node = NULL;
@@ -73,7 +73,7 @@ void init(struct data_listcontainer *s)
     s->head = node;
 }
 
-/* 查找第i个数据 */
+/* ���ҵ�i������ */
 struct data_node* find(struct data_listcontainer* s, int i)
 {
     struct data_node* p = s->head;
@@ -90,18 +90,18 @@ struct data_node* find(struct data_listcontainer* s, int i)
     return p;
 }
 
-/* 在位置i插入一个新数据节点 */
+/* ��λ��i����һ�������ݽڵ� */
 void insert(struct data_listcontainer *s, int i, elemType b)
 {
     struct data_node *q = NULL;
-    struct data_node *p = find(s, i-1); /* 找到第i-1个数据 */
+    struct data_node *p = find(s, i-1); /* �ҵ���i-1������ */
 
     if (p == NULL) {
         printf("No such node, insertion failed.\n");
         return;
     }
 
-    /* 为b分配一个节点空间 */
+    /* Ϊb����һ���ڵ�ռ� */
     q = (struct data_node *)malloc(sizeof(struct data_node));
     if(q == NULL) {
         printf("memory allocation error\n");
@@ -109,27 +109,27 @@ void insert(struct data_listcontainer *s, int i, elemType b)
     }
     q->data = b;
 
-    /* 把新节点插入到第i个数据节点之前 */
+    /* ���½ڵ���뵽��i�����ݽڵ�֮ǰ */
     q->next = p->next;
     p->next = q;
 }
 
 void del(struct data_listcontainer *s, int i)
 {
-    /* 删除第i个数据节点 */
+    /* ɾ����i�����ݽڵ� */
     struct data_node *q;
-    struct data_node *p = find(s, i-1); /* 找到第i-1个数据 */
+    struct data_node *p = find(s, i-1); /* �ҵ���i-1������ */
 
-    /* 修改指针：把第i个节点从链表中移出 */
+    /* �޸�ָ�룺�ѵ�i���ڵ���������Ƴ� */
     q = p->next;
     p->next = q->next;
 
-    /* 释放节点内存 */
+    /* �ͷŽڵ��ڴ� */
     free(q);
 }
 
-/* 查找容器中是否存在数b.
-   如果存放,返回其首次出现的位置;否则返回-1
+/* �����������Ƿ������b.
+   ������,�������״γ��ֵ�λ��;���򷵻�-1
  */
 int search(struct data_listcontainer *s, elemType b)
 {
@@ -150,12 +150,12 @@ int search(struct data_listcontainer *s, elemType b)
 
 void destroy(struct data_listcontainer *s)
 {
-    /* 清空容器 */
+    /* ������� */
     struct data_node *p = s->head, *q;
 
-    /* 释放容器中每一个节点 */
+    /* �ͷ�������ÿһ���ڵ� */
     while(p != NULL) {
-        q = p->next; /* 保留下一个节点的地址 */
+        q = p->next; /* ������һ���ڵ�ĵ�ַ */
         free(p);
         p = q;
     }

@@ -54,7 +54,7 @@ void Clear(struct stack_container *s)
 
 void Push(struct stack_container *s,  elemType b)
 {
-    // æŠŠæ•°bæ”¾å…¥æ ˆä¸­
+    // °ÑÊýb·ÅÈëÕ»ÖÐ
     s->data[s->top] = b;
     s->top++;
 
@@ -63,7 +63,7 @@ void Push(struct stack_container *s,  elemType b)
 
 elemType Pop(struct stack_container *s)
 {
-    // åˆ é™¤æ ˆé¡¶å…ƒç´ ï¼Œå¹¶è¿”å›žæ ˆé¡¶å…ƒç´ 
+    // É¾³ýÕ»¶¥ÔªËØ£¬²¢·µ»ØÕ»¶¥ÔªËØ
     s->top--;
     return s->data[s->top];
 }

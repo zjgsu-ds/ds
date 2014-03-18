@@ -22,36 +22,36 @@ int main()
     int i;
     char line[128];
 
-    /* ä¸¤ä¸ªå­˜å‚¨ç©ºé—´å®¹å™¨ï¼Œåˆ†åˆ«å­˜æ”¾é›†åˆAå’ŒB */
+    /* Á½¸ö´æ´¢¿Õ¼äÈİÆ÷£¬·Ö±ğ´æ·Å¼¯ºÏAºÍB */
     struct data_container LA, LB;
 
-    /* åˆå§‹åŒ–ç©ºå®¹å™¨ */
+    /* ³õÊ¼»¯¿ÕÈİÆ÷ */
     LA.n = 0;
     LB.n = 0;
 
-    /* è¾“å…¥é›†åˆAçš„æ•°æ® */
-    printf("è¾“å…¥A: \n");
+    /* ÊäÈë¼¯ºÏAµÄÊı¾İ */
+    printf("ÊäÈëA: \n");
     fgets(line, 128, stdin);
     i = 0;
 
     while(line[i] != '\n') {
-        /* è¯»å‡ºlineä¸­çš„æ¯ä¸ªå­—ç¬¦,å¹¶æ’å…¥åˆ°å®¹å™¨çš„æœ«å°¾ */
+        /* ¶Á³ölineÖĞµÄÃ¿¸ö×Ö·û,²¢²åÈëµ½ÈİÆ÷µÄÄ©Î² */
         insert(&LA, LA.n+1, line[i]);
         i++;
     }
 
-    /* è¾“å…¥é›†åˆBçš„æ•°æ® */
-    printf("è¾“å…¥B: \n");
+    /* ÊäÈë¼¯ºÏBµÄÊı¾İ */
+    printf("ÊäÈëB: \n");
     fgets(line, 128, stdin);
     i = 0;
 
     while(line[i] != '\n') {
-        /* è¯»å‡ºlineä¸­çš„æ¯ä¸ªå­—ç¬¦,å¹¶æ’å…¥åˆ°å®¹å™¨çš„æœ«å°¾ */
+        /* ¶Á³ölineÖĞµÄÃ¿¸ö×Ö·û,²¢²åÈëµ½ÈİÆ÷µÄÄ©Î² */
         insert(&LB, LB.n+1, line[i]);
         i++;
     }
 
-    /* åˆå¹¶é›†åˆAå’ŒBï¼Œåˆå¹¶æ•°æ®å­˜åœ¨é›†åˆAä¸­ */
+    /* ºÏ²¢¼¯ºÏAºÍB£¬ºÏ²¢Êı¾İ´æÔÚ¼¯ºÏAÖĞ */
     Union(&LA, &LB);
 
     printf("Result:\n");
@@ -64,16 +64,16 @@ int main()
     return 0;
 }
 
-/* å°†æ‰€æœ‰åœ¨LBä¸­å­˜åœ¨è€ŒLAä¸­ä¸å­˜åœ¨çš„æ•°æ®æ’å…¥åˆ°LAä¸­ */
+/* ½«ËùÓĞÔÚLBÖĞ´æÔÚ¶øLAÖĞ²»´æÔÚµÄÊı¾İ²åÈëµ½LAÖĞ */
 void Union(struct data_container *LA, struct data_container *LB)
 {
     int i;
 
     for(i = 1; i <= LB->n; i++) {
-        /* è·å¾—å®¹å™¨LBä¸­çš„ç¬¬iä¸ªæ•°æ® */
+        /* »ñµÃÈİÆ÷LBÖĞµÄµÚi¸öÊı¾İ */
         elemType d = getElem(LB, i);
 
-        /* æŠŠæ•°æ®æ’å…¥åˆ°å®¹å™¨LAçš„ç¬¬iä¸ªæ•°æ®ä¹‹å‰ */
+        /* °ÑÊı¾İ²åÈëµ½ÈİÆ÷LAµÄµÚi¸öÊı¾İÖ®Ç° */
         if (search(LA, d) < 0)
             insert(LA, LA->n + 1, d);
     }
@@ -81,13 +81,13 @@ void Union(struct data_container *LA, struct data_container *LB)
     return;
 }
 
-/* åœ¨ç¬¬iä¸ªä½ç½®æ’å…¥ä¸€ä¸ªæ•°b */
+/* ÔÚµÚi¸öÎ»ÖÃ²åÈëÒ»¸öÊıb */
 int insert(struct data_container *s, int i, elemType b)
 {
     int j = 0;
 
-    /* æ£€æŸ¥å‚æ•°åˆæ³•æ€§
-       æ’å…¥ä½ç½®åªèƒ½åœ¨èŒƒå›´[1, n+1]ï¼Œä¸”æœ‰è¶³å¤Ÿçš„å­˜å‚¨ç©ºé—´
+    /* ¼ì²é²ÎÊıºÏ·¨ĞÔ
+       ²åÈëÎ»ÖÃÖ»ÄÜÔÚ·¶Î§[1, n+1]£¬ÇÒÓĞ×ã¹»µÄ´æ´¢¿Õ¼ä
      */
     if(i < 0 || i > (s->n+1) || s->n == maxLen)
         return FALSE;
@@ -102,13 +102,13 @@ int insert(struct data_container *s, int i, elemType b)
     return TRUE;
 }
 
-/* åˆ é™¤ç¬¬iä¸ªæ•´æ•° */
+/* É¾³ıµÚi¸öÕûÊı */
 int del(struct data_container *s, int i)
 {
     int j = 0;
 
-    /* æ£€æŸ¥å‚æ•°åˆæ³•æ€§
-       içš„èŒƒå›´ä¸º:[1, n]
+    /* ¼ì²é²ÎÊıºÏ·¨ĞÔ
+       iµÄ·¶Î§Îª:[1, n]
     */
     if(i < 0 || i > s->n)
         return FALSE;
@@ -121,7 +121,7 @@ int del(struct data_container *s, int i)
     return TRUE;
 }
 
-/* æŸ¥æ‰¾æ•´æ•° b */
+/* ²éÕÒÕûÊı b */
 int search(struct data_container *s, elemType b)
 {
     int j = 0;
@@ -133,13 +133,13 @@ int search(struct data_container *s, elemType b)
     return (j >= s->n ? -1: j+1);
 }
 
-/* è®¡ç®—å®¹å™¨ä¸­çš„æ•°æ®ä¸ªæ•° */
+/* ¼ÆËãÈİÆ÷ÖĞµÄÊı¾İ¸öÊı */
 int Length(struct data_container *s)
 {
     return s->n;
 }
 
-/* è·å¾—å®¹å™¨sä¸­çš„ç¬¬iä¸ªæ•°æ® */
+/* »ñµÃÈİÆ÷sÖĞµÄµÚi¸öÊı¾İ */
 elemType getElem(struct data_container *s, int i)
 {
     return s->data[i-1];

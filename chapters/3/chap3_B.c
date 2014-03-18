@@ -18,14 +18,14 @@ int main()
     int len, i;
     struct stack_container s;
 
-    // è¯»å–å­—ç¬¦ä¸²
+    // ¶ÁÈ¡×Ö·û´®
     while (gets(str)) {
         len = strlen(str);
 
         str[0] = ' ';
-        str[len-1] = '\0'; /* å¿½ç•¥æœ€åä¸€ä¸ªåŒå¼•å· */
+        str[len-1] = '\0'; /* ºöÂÔ×îºóÒ»¸öË«ÒıºÅ */
 
-        // åˆå§‹åŒ–æ ˆå®¹å™¨
+        // ³õÊ¼»¯Õ»ÈİÆ÷
         InitStack(&s);
 
         for (i = 0; i < len; i++) {
@@ -56,7 +56,7 @@ void InitStack(struct stack_container *s)
 
 void Push(struct stack_container *s,  elemType b)
 {
-    // æŠŠæ•°bæ”¾å…¥æ ˆä¸­
+    // °ÑÊıb·ÅÈëÕ»ÖĞ
     s->data[s->top] = b;
     s->top++;
 
@@ -65,7 +65,7 @@ void Push(struct stack_container *s,  elemType b)
 
 elemType Pop(struct stack_container *s)
 {
-    // åˆ é™¤æ ˆé¡¶å…ƒç´ ï¼Œå¹¶è¿”å›æ ˆé¡¶å…ƒç´ 
+    // É¾³ıÕ»¶¥ÔªËØ£¬²¢·µ»ØÕ»¶¥ÔªËØ
     s->top--;
     return s->data[s->top];
 }

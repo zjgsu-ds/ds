@@ -19,20 +19,20 @@ int Count(struct stack_listcontainer *s);
 
 int main()
 {
-    // ä¸€ä¸ªå­˜å‚¨æµ®ç‚¹æ•°æ®çš„æ ˆå®¹å™¨
+    // Ò»¸ö´æ´¢¸¡µãÊý¾ÝµÄÕ»ÈÝÆ÷
     struct stack_listcontainer s;
 
-    // åˆå§‹åŒ–æ ˆå®¹å™¨
+    // ³õÊ¼»¯Õ»ÈÝÆ÷
     InitStack(&s);
 
-    // åœ¨æ ˆé¡¶æ”¾å¤šä¸ªå…ƒç´ 
+    // ÔÚÕ»¶¥·Å¶à¸öÔªËØ
     Push(&s, 1.0);
     Push(&s, 2.0);
     Push(&s, 3.0);
 
     printf("Count: %d\n", Count(&s));
 
-    // å‡ºæ ˆé¡¶æ•°æ®
+    // ³öÕ»¶¥Êý¾Ý
     printf("Pop: %f\n", Pop(&s));
 
     printf("Count: %d\n", Count(&s));
@@ -48,10 +48,10 @@ void InitStack(struct stack_listcontainer *s)
 
 void Push(struct stack_listcontainer *s,  elemType b)
 {
-    // æŠŠæ•°bæ”¾å…¥æ ˆä¸­
+    // °ÑÊýb·ÅÈëÕ»ÖÐ
     struct data_node *q = NULL;
 
-    // ä¸ºbåˆ†é…ä¸€ä¸ªèŠ‚ç‚¹ç©ºé—´
+    // Îªb·ÖÅäÒ»¸ö½Úµã¿Õ¼ä
     q = (struct data_node *)malloc(sizeof(struct data_node));
     if(q == NULL) {
         printf("memory allocation error\n");
@@ -59,18 +59,18 @@ void Push(struct stack_listcontainer *s,  elemType b)
     }
     q->data = b;
 
-    // æŠŠæ–°èŠ‚ç‚¹æ’åˆ°æ ˆé¡¶
+    // °ÑÐÂ½Úµã²åµ½Õ»¶¥
     q->next = s->top;
     s->top = q;
 }
 
 elemType Pop(struct stack_listcontainer *s)
 {
-    // åˆ é™¤æ ˆé¡¶å…ƒç´ ï¼Œå¹¶è¿”å›žæ ˆé¡¶å…ƒç´ 
+    // É¾³ýÕ»¶¥ÔªËØ£¬²¢·µ»ØÕ»¶¥ÔªËØ
     struct data_node *p = s->top->next;
     elemType b = s->top->data;
 
-    // é‡Šæ”¾æ ˆé¡¶èŠ‚ç‚¹
+    // ÊÍ·ÅÕ»¶¥½Úµã
     free(s->top);
     s->top = p;
 

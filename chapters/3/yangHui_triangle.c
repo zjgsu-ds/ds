@@ -21,13 +21,13 @@ int main()
     char yes;
 
     while(1) {
-        // è¾“å…¥å‚æ•°
+        // ÊäÈë²ÎÊı
         printf("Please Input Row of YangHui Triangle:");
         scanf("%d", &row);
 
         PrintYangHuiTriangle(row);
 
-        // æ˜¯å¦ç»§ç»­
+        // ÊÇ·ñ¼ÌĞø
         printf("Continue? (Y/N)");
         yes = getchar();
         printf("\n");
@@ -42,44 +42,44 @@ int main()
 
 void PrintYangHuiTriangle(int n)
 {
-    // æ‰“å°nè¡Œæ¨è¾‰ä¸‰è§’
+    // ´òÓ¡nĞĞÑî»ÔÈı½Ç
     int i = 0, k;
     elemType s, e;
 
-    // ä¸€ä¸ªå­˜å‚¨æ•´æ•°çš„å¾ªç¯é˜Ÿåˆ—å®¹å™¨
+    // Ò»¸ö´æ´¢ÕûÊıµÄÑ­»·¶ÓÁĞÈİÆ÷
     struct queue_container q;
     InitQueue(&q);
 
-    // ç¬¬ä¸€è¡Œå…ƒç´ 
+    // µÚÒ»ĞĞÔªËØ
     EnQueue(&q, 0);
     EnQueue(&q, 1);
     EnQueue(&q, 1);
     EnQueue(&q, 0);
 
     for(i = 1; i <= n; i ++) {
-        // æ‰“å°ç¬¬iè¡Œå…ƒç´ ,å¹¶è®¡ç®—ç¬¬i+1è¡Œå…ƒç´ 
+        // ´òÓ¡µÚiĞĞÔªËØ,²¢¼ÆËãµÚi+1ĞĞÔªËØ
 
-        // åˆ°ç¬¬iè¡Œèµ·å§‹ä½ç½®
+        // µ½µÚiĞĞÆğÊ¼Î»ÖÃ
         for(k = 1; k <= (n-i); k ++) {
             printf(" ");
         }
 
-        // ä¸¤ä¸¤å–å‡ºç¬¬iè¡Œçš„å…ƒç´ ,å¹¶è®¡ç®—ç¬¬i+1è¡Œçš„ç›¸åº”å…ƒç´ 
+        // Á½Á½È¡³öµÚiĞĞµÄÔªËØ,²¢¼ÆËãµÚi+1ĞĞµÄÏàÓ¦ÔªËØ
         if(i < n)
-            EnQueue(&q, 0); // ç¬¬i+1è¡Œèµ·å¤´0å…ƒç´ 
+            EnQueue(&q, 0); // µÚi+1ĞĞÆğÍ·0ÔªËØ
         do {
             DeQueue(&q, &s);
             HeadQueue(&q, &e);
             if(e != 0)
-                printf("%d ", e); // æ‰“å°ç¬¬iè¡Œçš„è¯¥å…ƒç´ 
+                printf("%d ", e); // ´òÓ¡µÚiĞĞµÄ¸ÃÔªËØ
             if(i < n)
-                EnQueue(&q, s+e); // è®¡ç®—ç¬¬i+1è¡Œçš„å¯¹åº”å…ƒç´ 
-        } while(e != 0); // e == 0: ç¬¬iè¡Œå…ƒç´ å·²å–å®Œ
+                EnQueue(&q, s+e); // ¼ÆËãµÚi+1ĞĞµÄ¶ÔÓ¦ÔªËØ
+        } while(e != 0); // e == 0: µÚiĞĞÔªËØÒÑÈ¡Íê
 
-        printf("\n"); // ç¬¬iè¡Œæ‰“å°ç»“æŸ
-        DeQueue(&q, &s); // åˆ é™¤ç¬¬iè¡Œæœ«å°¾0å…ƒç´ 
+        printf("\n"); // µÚiĞĞ´òÓ¡½áÊø
+        DeQueue(&q, &s); // É¾³ıµÚiĞĞÄ©Î²0ÔªËØ
         if(i < n)
-            EnQueue(&q, 0); // ç¬¬i+1è¡Œç»“å°¾0å…ƒç´ 
+            EnQueue(&q, 0); // µÚi+1ĞĞ½áÎ²0ÔªËØ
     }
 
     return;
@@ -93,9 +93,9 @@ void InitQueue(struct queue_container *s)
 
 int EnQueue(struct queue_container *s,  elemType b)
 {
-    // æŠŠæ•°bæ”¾å…¥é˜Ÿåˆ—
+    // °ÑÊıb·ÅÈë¶ÓÁĞ
     if(s->size == maxLen) {
-        // é˜Ÿåˆ—å·²æ»¡
+        // ¶ÓÁĞÒÑÂú
         return -1;
     }
 
@@ -108,9 +108,9 @@ int EnQueue(struct queue_container *s,  elemType b)
 
 int DeQueue(struct queue_container *s, elemType *b)
 {
-    // åˆ é™¤é˜Ÿå¤´å…ƒç´ 
+    // É¾³ı¶ÓÍ·ÔªËØ
     if(s->rear == s->front) {
-        // é˜Ÿåˆ—ä¸ºç©º
+        // ¶ÓÁĞÎª¿Õ
         return -1;
     }
 
@@ -123,9 +123,9 @@ int DeQueue(struct queue_container *s, elemType *b)
 
 int HeadQueue(struct queue_container *s, elemType *b)
 {
-    // è¯»å–é˜Ÿå¤´å…ƒç´ 
+    // ¶ÁÈ¡¶ÓÍ·ÔªËØ
     if(s->rear == s->front) {
-        // é˜Ÿåˆ—ä¸ºç©º
+        // ¶ÓÁĞÎª¿Õ
         return -1;
     }
 

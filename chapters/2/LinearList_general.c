@@ -18,26 +18,26 @@ int main()
     int i, j;
     elemType b;
 
-    /* ä¸€ä¸ªæµ®ç‚¹æ•°æ®å­˜å‚¨ç©ºé—´å®¹å™¨ */
+    /* Ò»¸ö¸¡µãÊı¾İ´æ´¢¿Õ¼äÈİÆ÷ */
     struct data_container s;
 
     init(&s);
 
-    /* åœ¨ç¬¬iä¸ªä½ç½®æ’å…¥ä¸€ä¸ªæ•°b */
+    /* ÔÚµÚi¸öÎ»ÖÃ²åÈëÒ»¸öÊıb */
     i = 1;
     b = 3.6;
     insert(&s, i, b);
 
-    /* åœ¨ç¬¬iä¸ªä½ç½®æ’å…¥ä¸€ä¸ªæ•°b */
+    /* ÔÚµÚi¸öÎ»ÖÃ²åÈëÒ»¸öÊıb */
     i = 2;
     b = 2.2;
     insert(&s, i, b);
 
-    /* åˆ é™¤ç¬¬iä¸ªæ•´æ•°*/
+    /* É¾³ıµÚi¸öÕûÊı*/
     i = 1;
     del(&s, i);
 
-    /* æŸ¥æ‰¾æ•° b */
+    /* ²éÕÒÊı b */
     b = 2.2;
     j = search(&s, b);
 
@@ -54,7 +54,7 @@ void init(struct data_container* s)
     s->n = 0;
 }
 
-/* åœ¨ç¬¬iä¸ªä½ç½®å‰æ’å…¥ä¸€ä¸ªæ•°b */
+/* ÔÚµÚi¸öÎ»ÖÃÇ°²åÈëÒ»¸öÊıb */
 void insert(struct data_container *s, int i, elemType b)
 {
     int j = 0;
@@ -66,7 +66,7 @@ void insert(struct data_container *s, int i, elemType b)
     s->n++;
 }
 
-/* åˆ é™¤ç¬¬iä¸ªæ•´æ•° */
+/* É¾³ıµÚi¸öÕûÊı */
 void del(struct data_container *s, int i)
 {
     int j = 0;
@@ -77,7 +77,7 @@ void del(struct data_container *s, int i)
     s->n--;
 }
 
-/* æŸ¥æ‰¾æ•´æ•° b */
+/* ²éÕÒÕûÊı b */
 int search(struct data_container *s, elemType b)
 {
     int j = 0;

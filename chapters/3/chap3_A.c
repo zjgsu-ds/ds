@@ -22,27 +22,27 @@ int main()
     char prev, curr;
     int len, i;
 
-    /* è¯»å–å­—ç¬¦ä¸² */
+    /* ¶ÁÈ¡×Ö·û´® */
     gets(str);
 
-    /* åˆå§‹åŒ–æ ˆ */
+    /* ³õÊ¼»¯Õ» */
     InitStack(&s);
 
     len = strlen(str);
     for (i = 0; i < len; i++) {
         curr = str[i];
 
-        if (IsOpenChar(curr)) {          /* å¦‚æœå½“å‰æ˜¯å·¦æ‹¬å¼§, å‹æ ˆ */
+        if (IsOpenChar(curr)) {          /* Èç¹ûµ±Ç°ÊÇ×óÀ¨»¡, Ñ¹Õ» */
             Push(&s, curr);
-        } else if (IsCloseChar(curr)) {  /* å¦‚æœæ˜¯å³æ‹¬å¼§ */
-            if (Empty(&s)) {             /* æ ˆä¸ºç©º, åˆ™æ²¡æœ‰åŒ¹é…çš„å·¦æ‹¬å¼§, å‡ºé”™ */
+        } else if (IsCloseChar(curr)) {  /* Èç¹ûÊÇÓÒÀ¨»¡ */
+            if (Empty(&s)) {             /* Õ»Îª¿Õ, ÔòÃ»ÓĞÆ¥ÅäµÄ×óÀ¨»¡, ³ö´í */
                 printf("NO\n");
                 return 0;
             }
 
             prev = Pop(&s);
 
-            if (!Matched(prev, curr)) { /* å·¦æ‹¬å¼§ä¸å½“å‰å³æ‹¬å¼§çš„ç±»å‹ä¸ä¸€è‡´, å‡ºé”™ */
+            if (!Matched(prev, curr)) { /* ×óÀ¨»¡Óëµ±Ç°ÓÒÀ¨»¡µÄÀàĞÍ²»Ò»ÖÂ, ³ö´í */
                 printf("NO\n");
                 return 0;
             }
@@ -51,7 +51,7 @@ int main()
 
     if (Empty(&s))
         printf("YES\n");
-    else /* å¦‚æœæ ˆä¸ä¸ºç©º, åˆ™æœ‰å·¦æ‹¬å¼§æ²¡æœ‰åŒ¹é…, å‡ºé”™ */
+    else /* Èç¹ûÕ»²»Îª¿Õ, ÔòÓĞ×óÀ¨»¡Ã»ÓĞÆ¥Åä, ³ö´í */
         printf("NO\n");
 
     return 0;

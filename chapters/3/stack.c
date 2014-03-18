@@ -15,17 +15,17 @@ int main()
 {
     elemType b;
 
-    // ä¸€ä¸ªå­˜å‚¨æµ®ç‚¹æ•°æ®çš„æ ˆå®¹å™¨
+    // Ò»¸ö´æ´¢¸¡µãÊý¾ÝµÄÕ»ÈÝÆ÷
     struct stack_container s;
 
-    // åˆå§‹åŒ–æ ˆå®¹å™¨
+    // ³õÊ¼»¯Õ»ÈÝÆ÷
     InitStack(&s);
 
-    // åœ¨æ ˆé¡¶æ”¾å…¥ä¸€ä¸ªæ•°b
+    // ÔÚÕ»¶¥·ÅÈëÒ»¸öÊýb
     b = 3.6;
     Push(&s, b);
 
-    // å‡ºæ ˆé¡¶æ•°æ®
+    // ³öÕ»¶¥Êý¾Ý
     b = Pop(&s);
 
     return 0;
@@ -39,7 +39,7 @@ void InitStack(struct stack_container *s)
 
 void Push(struct stack_container *s,  elemType b)
 {
-    // æŠŠæ•°bæ”¾å…¥æ ˆä¸­
+    // °ÑÊýb·ÅÈëÕ»ÖÐ
     s->data[s->top] = b;
     s->top++;
 
@@ -48,7 +48,7 @@ void Push(struct stack_container *s,  elemType b)
 
 elemType Pop(struct stack_container *s)
 {
-    // åˆ é™¤æ ˆé¡¶å…ƒç´ ï¼Œå¹¶è¿”å›žæ ˆé¡¶å…ƒç´ 
+    // É¾³ýÕ»¶¥ÔªËØ£¬²¢·µ»ØÕ»¶¥ÔªËØ
     s->top--;
     return s->data[s->top];
 }

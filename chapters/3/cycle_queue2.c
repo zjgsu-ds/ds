@@ -18,17 +18,17 @@ int main()
 {
     elemType b;
 
-    // ä¸€ä¸ªå­˜å‚¨æµ®ç‚¹æ•°æ®çš„å¾ªçŽ¯é˜Ÿåˆ—å®¹å™¨
+    // Ò»¸ö´æ´¢¸¡µãÊý¾ÝµÄÑ­»·¶ÓÁÐÈÝÆ÷
     struct queue_container s;
 
-    // åˆå§‹åŒ–æ ˆå®¹å™¨
+    // ³õÊ¼»¯Õ»ÈÝÆ÷
     InitQueue(&s);
 
-    // åœ¨é˜Ÿå°¾æ”¾å…¥ä¸€ä¸ªæ•°b
+    // ÔÚ¶ÓÎ²·ÅÈëÒ»¸öÊýb
     b = 3.6;
     EnQueue(&s, b);
 
-    // å‡ºé˜Ÿå¤´æ•°æ®
+    // ³ö¶ÓÍ·Êý¾Ý
     DeQueue(&s, &b);
 
     return 0;
@@ -42,9 +42,9 @@ void InitQueue(struct queue_container *s)
 
 int EnQueue(struct queue_container *s,  elemType b)
 {
-    // æŠŠæ•°bæ”¾å…¥é˜Ÿåˆ—
+    // °ÑÊýb·ÅÈë¶ÓÁÐ
     if(s->size == maxLen) {
-        // é˜Ÿåˆ—å·²æ»¡
+        // ¶ÓÁÐÒÑÂú
         return -1;
     }
 
@@ -57,9 +57,9 @@ int EnQueue(struct queue_container *s,  elemType b)
 
 int DeQueue(struct queue_container *s, elemType *b)
 {
-    // åˆ é™¤é˜Ÿå¤´å…ƒç´ 
+    // É¾³ý¶ÓÍ·ÔªËØ
     if(s->rear == s->front) {
-        // é˜Ÿåˆ—ä¸ºç©º
+        // ¶ÓÁÐÎª¿Õ
         return -1;
     }
 
@@ -72,9 +72,9 @@ int DeQueue(struct queue_container *s, elemType *b)
 
 int HeadQueue(struct queue_container *s, elemType *b)
 {
-    // è¯»å–é˜Ÿå¤´å…ƒç´ 
+    // ¶ÁÈ¡¶ÓÍ·ÔªËØ
     if(s->rear == s->front) {
-        // é˜Ÿåˆ—ä¸ºç©º
+        // ¶ÓÁÐÎª¿Õ
         return -1;
     }
 

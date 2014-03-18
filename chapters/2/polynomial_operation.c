@@ -14,11 +14,11 @@ struct polyItem* PolyAdd(struct polyItem *A, struct polyItem *B)
 
     while(p != 0) {
         if(p->exp < q->exp) {
-            /* pç»“ç‚¹ä¸ºå’Œä¸­çš„ä¸€é¡¹,ç§»åŠ¨p */
+            /* p½áµãÎªºÍÖÐµÄÒ»Ïî,ÒÆ¶¯p */
             pPrior = p;
             p = p->next;
         } else if(p->exp > q->exp) {
-            /* qç»“ç‚¹ä¸ºå’Œä¸­çš„ä¸€é¡¹,æ’å…¥åœ¨pç»“ç‚¹ä¹‹å‰,ç§»åŠ¨q */
+            /* q½áµãÎªºÍÖÐµÄÒ»Ïî,²åÈëÔÚp½áµãÖ®Ç°,ÒÆ¶¯q */
             qNext = q->next;
             if(pPrior != 0) {
                 pPrior->next = q;
