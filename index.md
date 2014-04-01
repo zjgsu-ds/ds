@@ -10,6 +10,7 @@ comments: false
 1. [绪论](chapters/1)
 2. [线性表](chapters/2)
 3. [栈与队列](chapters/3)
+4. [数组和串](chapters/4)
 
 
 ## 实验
