@@ -17,6 +17,7 @@ void insert(struct data_listcontainer *s, int i, elemType b);
 void del(struct data_listcontainer *s, int i);
 int search(struct data_listcontainer *s, elemType b);
 void destroy(struct data_listcontainer *s);
+int length(struct data_listcontainer *s);
 
 int main()
 {
@@ -38,6 +39,8 @@ int main()
     i = 2;
     b = 2.2;
     insert(&s, i, b);
+
+    printf("Length: %d\n", length(&s));
 
     /* 删除第i个整数 */
     i = 2;
@@ -74,20 +77,31 @@ void init(struct data_listcontainer *s)
 }
 
 /* 查找第i个数据 */
+struct data_node* find_helper(struct data_node *p, int i)
+{
+    if (i == 0 || p == NULL)
+        return p;
+    else
+        return find_helper(p->next, i-1);
+
+}
+
 struct data_node* find(struct data_listcontainer* s, int i)
 {
-    struct data_node* p = s->head;
-    int current_index = 0;
+    return find_helper(s->head, i);
+}
 
-    if (i < 0)
-        return NULL;
+int length_helper(struct data_node *p)
+{
+    if (p == NULL)
+        return 0;
+    else
+        return 1 + length_helper(p->next);
+}
 
-    while (current_index < i && p != NULL) {
-        p = p->next;
-        ++current_index;
-    }
-
-    return p;
+int length(struct data_listcontainer *s)
+{
+    return length_helper(s->head->next);
 }
 
 /* 在位置i插入一个新数据节点 */
