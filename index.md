@@ -11,11 +11,15 @@ comments: false
 2. [线性表](chapters/2)
 3. [栈与队列](chapters/3)
 4. [数组和串](chapters/4)
-
+5. [树和二叉树](chapters/5)
 
 ## 实验
 
 - [往年题目参考](docs/lab.doc)
+
+## 作业
+
+- [第7周](homework/7)
 
 ## 网络资源
 

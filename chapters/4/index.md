@@ -3,7 +3,6 @@ layout: page
 title: 4. 数组和串
 ---
 
-
 ## 课件
 
 - [下载](chap4.ppt)
