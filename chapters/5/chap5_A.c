@@ -14,21 +14,21 @@ int tree_node_number(struct TreeNode *root);
 int leaf_node_number(struct TreeNode *root);
 int tree_depth(struct TreeNode *root);
 
-// éå†äºŒå‰æ ‘
+// ±éÀú¶ş²æÊ÷
 void mid_traverse(struct TreeNode *root);
 void prior_traverse(struct TreeNode *root);
 void post_traverse(struct TreeNode *root);
 
 int main()
 {
-    // ä¸€æ£µäºŒå‰æ ‘å®¹å™¨
+    // Ò»¿Ã¶ş²æÊ÷ÈİÆ÷
     struct TreeNode* root = NULL;
     int n, i;
 
     scanf("%d\n", &n);
 
     for (i = 0; i < n; i++) {
-        // æ„å»ºè¯¥äºŒå‰æ ‘:ä¾æ®æ ‘å½¢å…³ç³»æŠŠæ•°æ®æ”¾å…¥å®¹å™¨ä¸­
+        // ¹¹½¨¸Ã¶ş²æÊ÷:ÒÀ¾İÊ÷ĞÎ¹ØÏµ°ÑÊı¾İ·ÅÈëÈİÆ÷ÖĞ
         root = CreateBiTree();
 
         printf("%d\n", leaf_node_number(root));
@@ -41,20 +41,20 @@ int main()
 
 struct TreeNode* CreateBiTree()
 {
-    // åˆ›å»ºä¸€æ£µäºŒå‰æ ‘
+    // ´´½¨Ò»¿Ã¶ş²æÊ÷
     ElemType b;
     struct TreeNode *root;
 
-    // æ¥æ”¶ç”¨æˆ·çš„è¾“å…¥ä½œä¸ºæ ¹(å¦‚æœè¾“å…¥ä¸ºé›¶,åˆ™ä¸ºç©ºæ ‘)
+    // ½ÓÊÕÓÃ»§µÄÊäÈë×÷Îª¸ù(Èç¹ûÊäÈëÎªÁã,ÔòÎª¿ÕÊ÷)
     scanf("%c", &b);
     if(b == '*')
         return NULL;
 
-    // å»ºç«‹äºŒå‰æ ‘çš„æ ¹
+    // ½¨Á¢¶ş²æÊ÷µÄ¸ù
     root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     root->data = b;
 
-    // åˆ›å»ºå·¦å³å­æ ‘
+    // ´´½¨×óÓÒ×ÓÊ÷
     root->lchild = CreateBiTree();
     root->rchild = CreateBiTree();
 
@@ -63,18 +63,18 @@ struct TreeNode* CreateBiTree()
 
 void insert_left_node(struct TreeNode *root, ElemType x)
 {
-    // æ’å…¥æ•°xä½œä¸ºqçš„å·¦å­©å­ç»“ç‚¹
+    // ²åÈëÊıx×÷ÎªqµÄ×óº¢×Ó½áµã
     struct TreeNode *p;
 
-    // ä¸ºxæ–°å»ºä¸€ä¸ªç»“ç‚¹
+    // ÎªxĞÂ½¨Ò»¸ö½áµã
     p = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     p->data = x;
 
-    // æŠŠqçš„å·¦å­æ ‘ä½œä¸ºpçš„å·¦å­æ ‘,pçš„å³å­æ ‘ä¸ºç©º
+    // °ÑqµÄ×ó×ÓÊ÷×÷ÎªpµÄ×ó×ÓÊ÷,pµÄÓÒ×ÓÊ÷Îª¿Õ
     p->lchild = root->lchild;
     p->rchild = NULL;
 
-    // æŠŠæ–°å»ºç»“ç‚¹pä½œä¸ºqçš„å·¦å­©å­
+    // °ÑĞÂ½¨½áµãp×÷ÎªqµÄ×óº¢×Ó
     root->lchild = p;
 
     return;
@@ -82,7 +82,7 @@ void insert_left_node(struct TreeNode *root, ElemType x)
 
 int tree_node_number(struct TreeNode *root)
 {
-    // ä¸ºä¸€æ£µç©ºæ ‘
+    // ÎªÒ»¿Ã¿ÕÊ÷
     if(root == NULL)
         return 0;
     else
@@ -112,47 +112,47 @@ int tree_depth(struct TreeNode *root)
         return 1 + max(tree_depth(root->lchild), tree_depth(root->rchild));
 }
 
-// ä¸­åºéå†äºŒå‰æ ‘
+// ÖĞĞò±éÀú¶ş²æÊ÷
 void mid_traverse(struct TreeNode *root)
 {
 
-    if(root != NULL){ // ä¸€æ£µéç©ºçš„äºŒå‰æ ‘
-        // ä¸­åºéå†å·¦å­æ ‘
+    if(root != NULL){ // Ò»¿Ã·Ç¿ÕµÄ¶ş²æÊ÷
+        // ÖĞĞò±éÀú×ó×ÓÊ÷
         mid_traverse(root->lchild);
 
-        // è®¿é—®æ ¹èŠ‚ç‚¹
+        // ·ÃÎÊ¸ù½Úµã
         printf("%d ", root->data);
 
-        // ä¸­åºéå†å³å­æ ‘
+        // ÖĞĞò±éÀúÓÒ×ÓÊ÷
         mid_traverse(root->rchild);
     }
 }
 
-// å…ˆåºéå†äºŒå‰æ ‘
+// ÏÈĞò±éÀú¶ş²æÊ÷
 void prior_traverse(struct TreeNode *root)
 {
-    if(root != NULL){ // ä¸€æ£µéç©ºçš„äºŒå‰æ ‘
-        // è®¿é—®æ ¹èŠ‚ç‚¹
+    if(root != NULL){ // Ò»¿Ã·Ç¿ÕµÄ¶ş²æÊ÷
+        // ·ÃÎÊ¸ù½Úµã
         printf("%d ", root->data);
 
-        // å…ˆåºéå†å·¦å­æ ‘
+        // ÏÈĞò±éÀú×ó×ÓÊ÷
         prior_traverse(root->lchild);
 
-        // å…ˆåºéå†å³å­æ ‘
+        // ÏÈĞò±éÀúÓÒ×ÓÊ÷
         prior_traverse(root->rchild);
     }
 }
 
 void post_traverse(struct TreeNode *root)
 {
-    if(root != NULL){ // ä¸€æ£µéç©ºçš„äºŒå‰æ ‘
-        // ååºéå†å·¦å­æ ‘
+    if(root != NULL){ // Ò»¿Ã·Ç¿ÕµÄ¶ş²æÊ÷
+        // ºóĞò±éÀú×ó×ÓÊ÷
         post_traverse(root->lchild);
 
-        // ååºéå†å³å­æ ‘
+        // ºóĞò±éÀúÓÒ×ÓÊ÷
         post_traverse(root->rchild);
 
-        // è®¿é—®æ ¹èŠ‚ç‚¹
+        // ·ÃÎÊ¸ù½Úµã
         printf("%d ", root->data);
     }
 }

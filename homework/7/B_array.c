@@ -42,7 +42,7 @@ int main()
     for (i = 0; i < res.n; i++)
         printf("%d ", res.pData[i]);
 
-    /* 清空容器空间 */
+    /* ��������ռ� */
     destroy(&s);
     destroy(&t);
     destroy(&res);
@@ -73,7 +73,7 @@ void merge(struct data_container* s, struct data_container* t, struct data_conta
     }
 }
 
-/* 初始化数据容器的存储空间 */
+/* ��ʼ�����������Ĵ洢�ռ� */
 void init(struct data_container *s, int size)
 {
     s->pData = (elemType*)malloc(sizeof(elemType) * size);
@@ -81,7 +81,7 @@ void init(struct data_container *s, int size)
     s->n = 0;
 }
 
-/* 清空数据容器的存储空间 */
+/* ������������Ĵ洢�ռ� */
 void destroy(struct data_container *s)
 {
     free(s->pData);
@@ -89,27 +89,27 @@ void destroy(struct data_container *s)
     s->n = 0;
 }
 
-/* 在第i个位置插入一个数b */
+/* �ڵ�i��λ�ò���һ����b */
 void insert(struct data_container *s, int i, elemType b)
 {
     int j = 0;
 
-    if(s->n == s->size) { /* 容器空间不足 */
-        // 为容器申请新的更大空间
+    if(s->n == s->size) { /* �����ռ䲻�� */
+        // Ϊ���������µĸ���ռ�
         elemType *pNewData = (elemType*) malloc ( sizeof(elemType) * 2*s->size);
 
-        // 把原空间中数据移到新空间中
+        // ��ԭ�ռ��������Ƶ��¿ռ���
         for(j = 0; j < s->n; j ++) {
             pNewData[j] = s->pData[j];
         }
 
-        // 用新空间替换旧空间
+        // ���¿ռ��滻�ɿռ�
         free(s->pData);
         s->pData = pNewData;
         s->size = 2*s->size;
     }
 
-    // 插入数b
+    // ������b
     for(j = s->n-1; j >= (i-1); j --) {
         s->pData[j+1] = s->pData[j];
     }

@@ -10,30 +10,30 @@ struct TreeNode
 
 struct TreeNode* CreateBiTree();
 
-// éå†äºŒå‰æ ‘
+// ±éÀú¶ş²æÊ÷
 void mid_traverse(struct TreeNode *root);
 void post_traverse(struct TreeNode *root);
 void level_traverse(struct TreeNode *root);
 
 int main()
 {
-    // ä¸€æ£µäºŒå‰æ ‘å®¹å™¨
+    // Ò»¿Ã¶ş²æÊ÷ÈİÆ÷
     struct TreeNode* root = NULL;
 
-    // æ„å»ºè¯¥äºŒå‰æ ‘:ä¾æ®æ ‘å½¢å…³ç³»æŠŠæ•°æ®æ”¾å…¥å®¹å™¨ä¸­
+    // ¹¹½¨¸Ã¶ş²æÊ÷:ÒÀ¾İÊ÷ĞÎ¹ØÏµ°ÑÊı¾İ·ÅÈëÈİÆ÷ÖĞ
     root = CreateBiTree();
 
-    // ä¸­åºéå†
+    // ÖĞĞò±éÀú
     mid_traverse(root);
 
     putchar(' ');
 
-    // åç»­éå†
+    // ºóĞø±éÀú
     post_traverse(root);
 
     putchar(' ');
 
-    // å±‚æ¬¡éå†
+    // ²ã´Î±éÀú
     level_traverse(root);
 
     putchar('\n');
@@ -43,52 +43,52 @@ int main()
 
 struct TreeNode* CreateBiTree()
 {
-    // åˆ›å»ºä¸€æ£µäºŒå‰æ ‘
+    // ´´½¨Ò»¿Ã¶ş²æÊ÷
     ElemType b;
     struct TreeNode *root;
 
-    // æ¥æ”¶ç”¨æˆ·çš„è¾“å…¥ä½œä¸ºæ ¹(å¦‚æœè¾“å…¥ä¸ºé›¶,åˆ™ä¸ºç©ºæ ‘)
+    // ½ÓÊÕÓÃ»§µÄÊäÈë×÷Îª¸ù(Èç¹ûÊäÈëÎªÁã,ÔòÎª¿ÕÊ÷)
     scanf("%c", &b);
     if(b == '#')
         return NULL;
 
-    // å»ºç«‹äºŒå‰æ ‘çš„æ ¹
+    // ½¨Á¢¶ş²æÊ÷µÄ¸ù
     root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     root->data = b;
 
-    // åˆ›å»ºå·¦å³å­æ ‘
+    // ´´½¨×óÓÒ×ÓÊ÷
     root->lchild = CreateBiTree();
     root->rchild = CreateBiTree();
 
     return root;
 }
 
-// ä¸­åºéå†äºŒå‰æ ‘
+// ÖĞĞò±éÀú¶ş²æÊ÷
 void mid_traverse(struct TreeNode *root)
 {
 
-    if(root != NULL){ // ä¸€æ£µéç©ºçš„äºŒå‰æ ‘
-        // ä¸­åºéå†å·¦å­æ ‘
+    if(root != NULL){ // Ò»¿Ã·Ç¿ÕµÄ¶ş²æÊ÷
+        // ÖĞĞò±éÀú×ó×ÓÊ÷
         mid_traverse(root->lchild);
 
-        // è®¿é—®æ ¹èŠ‚ç‚¹
+        // ·ÃÎÊ¸ù½Úµã
         printf("%c", root->data);
 
-        // ä¸­åºéå†å³å­æ ‘
+        // ÖĞĞò±éÀúÓÒ×ÓÊ÷
         mid_traverse(root->rchild);
     }
 }
 
 void post_traverse(struct TreeNode *root)
 {
-    if(root != NULL){ // ä¸€æ£µéç©ºçš„äºŒå‰æ ‘
-        // ååºéå†å·¦å­æ ‘
+    if(root != NULL){ // Ò»¿Ã·Ç¿ÕµÄ¶ş²æÊ÷
+        // ºóĞò±éÀú×ó×ÓÊ÷
         post_traverse(root->lchild);
 
-        // ååºéå†å³å­æ ‘
+        // ºóĞò±éÀúÓÒ×ÓÊ÷
         post_traverse(root->rchild);
 
-        // è®¿é—®æ ¹èŠ‚ç‚¹
+        // ·ÃÎÊ¸ù½Úµã
         printf("%c", root->data);
     }
 }

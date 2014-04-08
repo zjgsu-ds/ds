@@ -35,7 +35,7 @@ int main()
     for (i = 0; i < s.n; i++)
         printf("%d ", s.pData[i]);
 
-    /* æ¸…ç©ºå®¹å™¨ç©ºé—´ */
+    /* Çå¿ÕÈİÆ÷¿Õ¼ä */
     destroy(&s);
     destroy(&t);
 
@@ -44,7 +44,7 @@ int main()
 
 int search(struct data_container *s, elemType b)
 {
-    // æŸ¥æ‰¾æ•´æ•° b
+    // ²éÕÒÕûÊı b
     int j = 0;
 
     for(j = 0; j <= s->n-1; j ++) {
@@ -57,7 +57,7 @@ int search(struct data_container *s, elemType b)
 
 void del(struct data_container *s, int i)
 {
-    // åˆ é™¤ç¬¬iä¸ªæ•´æ•°
+    // É¾³ıµÚi¸öÕûÊı
     int j = 0;
 
     for(j = i; j <= s->n-1; j ++) {
@@ -79,7 +79,7 @@ void subset(struct data_container *s, struct data_container *t)
     }
 }
 
-/* åˆå§‹åŒ–æ•°æ®å®¹å™¨çš„å­˜å‚¨ç©ºé—´ */
+/* ³õÊ¼»¯Êı¾İÈİÆ÷µÄ´æ´¢¿Õ¼ä */
 void init(struct data_container *s, int size)
 {
     s->pData = (elemType*)malloc(sizeof(elemType) * size);
@@ -87,7 +87,7 @@ void init(struct data_container *s, int size)
     s->n = 0;
 }
 
-/* æ¸…ç©ºæ•°æ®å®¹å™¨çš„å­˜å‚¨ç©ºé—´ */
+/* Çå¿ÕÊı¾İÈİÆ÷µÄ´æ´¢¿Õ¼ä */
 void destroy(struct data_container *s)
 {
     free(s->pData);
@@ -95,27 +95,27 @@ void destroy(struct data_container *s)
     s->n = 0;
 }
 
-/* åœ¨ç¬¬iä¸ªä½ç½®æ’å…¥ä¸€ä¸ªæ•°b */
+/* ÔÚµÚi¸öÎ»ÖÃ²åÈëÒ»¸öÊıb */
 void insert(struct data_container *s, int i, elemType b)
 {
     int j = 0;
 
-    if(s->n == s->size) { /* å®¹å™¨ç©ºé—´ä¸è¶³ */
-        // ä¸ºå®¹å™¨ç”³è¯·æ–°çš„æ›´å¤§ç©ºé—´
+    if(s->n == s->size) { /* ÈİÆ÷¿Õ¼ä²»×ã */
+        // ÎªÈİÆ÷ÉêÇëĞÂµÄ¸ü´ó¿Õ¼ä
         elemType *pNewData = (elemType*) malloc ( sizeof(elemType) * 2*s->size);
 
-        // æŠŠåŸç©ºé—´ä¸­æ•°æ®ç§»åˆ°æ–°ç©ºé—´ä¸­
+        // °ÑÔ­¿Õ¼äÖĞÊı¾İÒÆµ½ĞÂ¿Õ¼äÖĞ
         for(j = 0; j < s->n; j ++) {
             pNewData[j] = s->pData[j];
         }
 
-        // ç”¨æ–°ç©ºé—´æ›¿æ¢æ—§ç©ºé—´
+        // ÓÃĞÂ¿Õ¼äÌæ»»¾É¿Õ¼ä
         free(s->pData);
         s->pData = pNewData;
         s->size = 2*s->size;
     }
 
-    // æ’å…¥æ•°b
+    // ²åÈëÊıb
     for(j = s->n-1; j >= (i-1); j --) {
         s->pData[j+1] = s->pData[j];
     }

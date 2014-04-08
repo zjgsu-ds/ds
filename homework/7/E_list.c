@@ -23,20 +23,20 @@ int main()
     elemType x;
     struct data_node* p;
 
-    /* 一个浮点数据存储空间容器 */
+    /* һ���������ݴ洢�ռ����� */
     struct data_listcontainer s, t;
 
-    /* 初始化容器空间 */
+    /* ��ʼ�������ռ� */
     init(&s);
     init(&t);
 
-    scanf("A序列为 ");
+    scanf("A����Ϊ ");
 
     i = 1;
     while (scanf("%d", &x) == 1)
         insert(&s, i++, x);
 
-    scanf("B序列为 ");
+    scanf("B����Ϊ ");
 
     i = 1;
     while (scanf("%d", &x) == 1)
@@ -44,9 +44,9 @@ int main()
 
 
     if (subseq(&s, &t))
-        printf("是");
+        printf("��");
 
-    /* 清空容器空间 */
+    /* ��������ռ� */
     destroy(&s);
     destroy(&t);
 
@@ -80,7 +80,7 @@ int subseq(struct data_listcontainer *s, struct data_listcontainer *t)
     return 0;
 }
 
-/* 初始化链表：建立一个头结点 */
+/* ��ʼ������������һ��ͷ��� */
 void init(struct data_listcontainer *s)
 {
     struct data_node *node = 0;
@@ -96,7 +96,7 @@ void init(struct data_listcontainer *s)
     return;
 }
 
-/* 查找第i个数据 */
+/* ���ҵ�i������ */
 struct data_node* find(struct data_listcontainer* s, int i)
 {
     struct data_node* p = s->head;
@@ -113,18 +113,18 @@ struct data_node* find(struct data_listcontainer* s, int i)
     return p;
 }
 
-/* 在位置i插入一个新数据节点 */
+/* ��λ��i����һ�������ݽڵ� */
 void insert(struct data_listcontainer *s, int i, elemType b)
 {
     struct data_node *q = NULL;
-    struct data_node *p = find(s, i-1); /* 找到第i-1个数据 */
+    struct data_node *p = find(s, i-1); /* �ҵ���i-1������ */
 
     if (p == NULL) {
         printf("No such node, insertion failed.\n");
         return;
     }
 
-    /* 为b分配一个节点空间 */
+    /* Ϊb����һ���ڵ�ռ� */
     q = (struct data_node *)malloc(sizeof(struct data_node));
     if(q == 0) {
         printf("memory allocation error\n");
@@ -132,7 +132,7 @@ void insert(struct data_listcontainer *s, int i, elemType b)
     }
     q->data = b;
 
-    /* 把新节点插入到第i个数据节点之前 */
+    /* ���½ڵ���뵽��i�����ݽڵ�֮ǰ */
     q->next = p->next;
     p->next = q;
 
@@ -141,12 +141,12 @@ void insert(struct data_listcontainer *s, int i, elemType b)
 
 void destroy(struct data_listcontainer *s)
 {
-    /* 清空容器 */
+    /* ������� */
     struct data_node *p = s->head, *q;
 
-    /* 释放容器中每一个节点 */
+    /* �ͷ�������ÿһ���ڵ� */
     while(p != 0) {
-        q = p->next; /* 保留下一个节点的地址 */
+        q = p->next; /* ������һ���ڵ�ĵ�ַ */
         free(p);
         p = q;
     }

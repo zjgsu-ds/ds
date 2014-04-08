@@ -11,12 +11,12 @@ struct TreeNode
 
 struct TreeNode* CreateBiTree(char* prior, char* mid, int len);
 
-// éå†äºŒå‰æ ‘
+// ±éÀú¶ş²æÊ÷
 void post_traverse(struct TreeNode *root);
 
 int main()
 {
-    // ä¸€æ£µäºŒå‰æ ‘å®¹å™¨
+    // Ò»¿Ã¶ş²æÊ÷ÈİÆ÷
     struct TreeNode* root = NULL;
     char prior[100];
     char mid[100];
@@ -55,14 +55,14 @@ struct TreeNode* CreateBiTree(char* prior, char* mid, int len)
 
 void post_traverse(struct TreeNode *root)
 {
-    if(root != NULL){ // ä¸€æ£µéç©ºçš„äºŒå‰æ ‘
-        // ååºéå†å·¦å­æ ‘
+    if(root != NULL){ // Ò»¿Ã·Ç¿ÕµÄ¶ş²æÊ÷
+        // ºóĞò±éÀú×ó×ÓÊ÷
         post_traverse(root->lchild);
 
-        // ååºéå†å³å­æ ‘
+        // ºóĞò±éÀúÓÒ×ÓÊ÷
         post_traverse(root->rchild);
 
-        // è®¿é—®æ ¹èŠ‚ç‚¹
+        // ·ÃÎÊ¸ù½Úµã
         printf("%c", root->data);
     }
 }

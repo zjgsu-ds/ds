@@ -35,7 +35,7 @@ int main()
 
 struct TreeNode* CreateBiTree()
 {
-    // 鍒涘缓涓�妫典簩鍙夋爲
+    // 创建一棵二叉树
     ElemType b;
     struct TreeNode *root = NULL;
 

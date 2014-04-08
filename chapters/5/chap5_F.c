@@ -14,7 +14,7 @@ int tree_depth(struct TreeNode *root);
 
 int main()
 {
-    // ä¸€æ£µäºŒå‰æ ‘å®¹å™¨
+    // Ò»¿Ã¶ş²æÊ÷ÈİÆ÷
     struct TreeNode* root = NULL;
     int prior[100];
     int mid[100];
