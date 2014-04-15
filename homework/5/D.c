@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,16 +14,19 @@ struct data_listcontainer {
 void init(struct data_listcontainer *s);
 void insert(struct data_listcontainer *s, int i, elemType b);
 void destroy(struct data_listcontainer *s);
-void sort(struct data_listcontainer *s);
 
 int main()
 {
-    struct data_listcontainer s;
+    int n, i, min_value;
+    elemType b;
     struct data_node *p;
-    int n, i, b;
+
+    /* 一个浮点数据存储空间容器 */
+    struct data_listcontainer s;
 
     scanf("%d", &n);
 
+    /* 初始化容器空间 */
     init(&s);
 
     for (i = 0; i < n; i++) {
@@ -32,41 +34,18 @@ int main()
         insert(&s, i+1, b);
     }
 
-    sort(&s);
-
+    min_value = s.head->next->data;
     for (p = s.head->next; p != NULL; p = p->next)
-        printf("%d ", p->data);
+        if (p->data < min_value)
+            min_value = p->data;
 
-    printf("\n");
+    printf("%d\n", min_value);
 
+
+    /* 清空容器空间 */
     destroy(&s);
 
     return 0;
-}
-
-struct data_node* find_min_node(struct data_node* head)
-{
-    struct data_node *min_node = head;
-    struct data_node *p;
-
-    for (p = head; p != NULL; p = p->next)
-        if (p->data < min_node->data)
-            min_node = p;
-
-    return min_node;
-}
-
-void sort(struct data_listcontainer *s)
-{
-    struct data_node *p, *min_node;
-    int temp;
-
-    for (p = s->head->next; p != NULL; p = p->next) {
-        min_node = find_min_node(p);
-        temp = min_node->data;
-        min_node->data = p->data;
-        p->data = temp;
-    }
 }
 
 /* 初始化链表：建立一个头结点 */

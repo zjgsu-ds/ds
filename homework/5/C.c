@@ -1,11 +1,10 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
 typedef int elemType;
 struct data_node {
     elemType data;
-    struct data_node *next;
+    struct data_node *link, *prev;
 };
 
 struct data_listcontainer {
@@ -15,58 +14,52 @@ struct data_listcontainer {
 void init(struct data_listcontainer *s);
 void insert(struct data_listcontainer *s, int i, elemType b);
 void destroy(struct data_listcontainer *s);
-void sort(struct data_listcontainer *s);
+
+void relink(struct data_listcontainer *s);
 
 int main()
 {
+    elemType b;
+    int i = 0;
+
+    /* 一个浮点数据存储空间容器 */
     struct data_listcontainer s;
     struct data_node *p;
-    int n, i, b;
 
-    scanf("%d", &n);
-
+    /* 初始化容器空间 */
     init(&s);
 
-    for (i = 0; i < n; i++) {
-        scanf("%d", &b);
-        insert(&s, i+1, b);
-    }
+    /* 在第i个位置前插入一个数b */
+    while (scanf("%d", &b) != EOF)
+        insert(&s, ++i, b);
 
-    sort(&s);
+    relink(&s);
 
-    for (p = s.head->next; p != NULL; p = p->next)
+    for (p = s.head->link; p->link != s.head->link; p = p->link)
         printf("%d ", p->data);
+
+    printf("%d ", p->data);
 
     printf("\n");
 
+    /* 清空容器空间 */
     destroy(&s);
 
     return 0;
 }
 
-struct data_node* find_min_node(struct data_node* head)
+void relink(struct data_listcontainer *s)
 {
-    struct data_node *min_node = head;
     struct data_node *p;
 
-    for (p = head; p != NULL; p = p->next)
-        if (p->data < min_node->data)
-            min_node = p;
+    if (s->head->link == NULL)
+        return;
 
-    return min_node;
-}
+    for (p = s->head->link; p->link != NULL; p = p->link)
+        p->link->prev = p;
 
-void sort(struct data_listcontainer *s)
-{
-    struct data_node *p, *min_node;
-    int temp;
-
-    for (p = s->head->next; p != NULL; p = p->next) {
-        min_node = find_min_node(p);
-        temp = min_node->data;
-        min_node->data = p->data;
-        p->data = temp;
-    }
+    p->link = s->head->link;
+    s->head->prev = p;
 }
 
 /* 初始化链表：建立一个头结点 */
@@ -80,7 +73,7 @@ void init(struct data_listcontainer *s)
         return;
     }
 
-    node->next = NULL;
+    node->link = NULL;
     s->head = node;
 }
 
@@ -90,7 +83,7 @@ struct data_node* find_helper(struct data_node *p, int i)
     if (i == 0 || p == NULL)
         return p;
     else
-        return find_helper(p->next, i-1);
+        return find_helper(p->link, i-1);
 
 }
 
@@ -119,21 +112,24 @@ void insert(struct data_listcontainer *s, int i, elemType b)
     q->data = b;
 
     /* 把新节点插入到第i个数据节点之前 */
-    q->next = p->next;
-    p->next = q;
+    q->link = p->link;
+    p->link = q;
 }
 
 void destroy(struct data_listcontainer *s)
 {
     /* 清空容器 */
-    struct data_node *p = s->head, *q;
+    struct data_node *p = s->head->link, *q;
 
     /* 释放容器中每一个节点 */
-    while(p != NULL) {
-        q = p->next; /* 保留下一个节点的地址 */
+    while(p->link != s->head->link) {
+        q = p->link; /* 保留下一个节点的地址 */
         free(p);
         p = q;
     }
+
+    free(s->head);
+    free(p);
 
     s->head = NULL;
 }

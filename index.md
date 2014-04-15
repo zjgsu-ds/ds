@@ -19,6 +19,8 @@ comments: false
 
 ## 作业
 
+- [第5周](homework/5)
+- [第6周](homework/6)
 - [第7周](homework/7)
 
 ## 网络资源

@@ -1,8 +1,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-typedef float elemType;
+typedef char elemType[100];
 struct data_node {
     elemType data;
     struct data_node *next;
@@ -14,46 +15,34 @@ struct data_listcontainer {
 
 void init(struct data_listcontainer *s);
 void insert(struct data_listcontainer *s, int i, elemType b);
-void del(struct data_listcontainer *s, int i);
 int search(struct data_listcontainer *s, elemType b);
 void destroy(struct data_listcontainer *s);
-int length(struct data_listcontainer *s);
 
 int main()
 {
-    int i, j;
+    int n, i, count;
     elemType b;
 
     /* 一个浮点数据存储空间容器 */
     struct data_listcontainer s;
+    struct data_node *p;
+
+    scanf("%d", &n);
 
     /* 初始化容器空间 */
     init(&s);
 
-    /* 在第i个位置前插入一个数b */
-    i = 1;
-    b = 3.6;
-    insert(&s, i, b);
+    count = 0;
+    for (i = 0 ; i < n; i++) {
+        scanf("%s", b);
+        if (search(&s, b) == -1)
+            insert(&s, ++count, b);
+    }
 
-    /* 在第i个位置前插入一个数b */
-    i = 2;
-    b = 2.2;
-    insert(&s, i, b);
+    for (p = s.head->next; p != NULL; p = p->next)
+        printf("%s ", p->data);
 
-    printf("Length: %d\n", length(&s));
-
-    /* 删除第i个整数 */
-    i = 2;
-    del(&s, i);
-
-    /* 查找数 b */
-    b = 3.6;
-    j = search(&s, b);
-
-    if(j < 0)
-        printf("%f not found\n", b);
-    else
-        printf("%f found\n", b);
+    printf("\n");
 
     /* 清空容器空间 */
     destroy(&s);
@@ -91,19 +80,6 @@ struct data_node* find(struct data_listcontainer* s, int i)
     return find_helper(s->head, i);
 }
 
-int length_helper(struct data_node *p)
-{
-    if (p == NULL)
-        return 0;
-    else
-        return 1 + length_helper(p->next);
-}
-
-int length(struct data_listcontainer *s)
-{
-    return length_helper(s->head->next);
-}
-
 /* 在位置i插入一个新数据节点 */
 void insert(struct data_listcontainer *s, int i, elemType b)
 {
@@ -121,25 +97,11 @@ void insert(struct data_listcontainer *s, int i, elemType b)
         printf("memory allocation error\n");
         return;
     }
-    q->data = b;
+    strcpy(q->data, b);
 
     /* 把新节点插入到第i个数据节点之前 */
     q->next = p->next;
     p->next = q;
-}
-
-void del(struct data_listcontainer *s, int i)
-{
-    /* 删除第i个数据节点 */
-    struct data_node *q;
-    struct data_node *p = find(s, i-1); /* 找到第i-1个数据 */
-
-    /* 修改指针：把第i个节点从链表中移出 */
-    q = p->next;
-    p->next = q->next;
-
-    /* 释放节点内存 */
-    free(q);
 }
 
 /* 查找容器中是否存在数b.
@@ -151,9 +113,8 @@ int search(struct data_listcontainer *s, elemType b)
     int j = 1;
 
     while(p != NULL) {
-        if(p->data == b) {
+        if(strcmp(p->data, b) == 0)
             return j;
-        }
 
         p = p->next;
         j++;

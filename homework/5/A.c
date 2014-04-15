@@ -11,13 +11,11 @@ struct data_container {
 void init(struct data_container *s, int size);
 void destroy(struct data_container *s);
 void insert(struct data_container *s, int i, elemType b);
-void del(struct data_container *s, int i);
-int search(struct data_container *s, elemType b);
 
 int main()
 {
     struct data_container s;
-    int n, i, b, item;
+    int n, i, j, b, item;
 
     scanf("%d", &n);
     init(&s, n);
@@ -29,13 +27,12 @@ int main()
 
     scanf("%d", &item);
 
-    for (i = 0; i < s.n;) {
-        if (s.pData[i] == item) {
-            del(&s, i+1);
-        } else {
-            i++;
-        }
-    }
+    j = 0;
+    for (i = 0; i < s.n; i++)
+        if (s.pData[i] != item)
+            s.pData[j++] = s.pData[i];
+
+    s.n = j;
 
     for (i = 0; i < s.n; i++)
         printf("%d ", s.pData[i]);
@@ -92,27 +89,3 @@ void insert(struct data_container *s, int i, elemType b)
     s->n ++;
 }
 
-void del(struct data_container *s, int i)
-{
-    // 删除第i个整数
-    int j = 0;
-
-    for(j = i; j <= s->n-1; j ++) {
-        s->pData[j-1] = s->pData[j];
-    }
-
-    s->n --;
-}
-
-int search(struct data_container *s, elemType b)
-{
-    // 查找整数 b
-    int j = 0;
-
-    for(j = 0; j <= s->n-1; j ++) {
-        if(b == s->pData[j])
-            break;
-    }
-
-    return (j >= s->n ? -1: j+1);
-}

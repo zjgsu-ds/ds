@@ -39,6 +39,9 @@ int main()
     // 计算树的深度
     printf("The depth of the tree is: %d\n", tree_depth(root));
 
+    // 中序遍历
+    mid_traverse(root);
+
     return 0;
 }
 

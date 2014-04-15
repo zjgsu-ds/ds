@@ -3,6 +3,8 @@ layout: page
 title: 第7周作业
 ---
 
+[作业题目](http://10.21.11.101/JudgeOnline/contest.php?cid=1902)
+
 - A
 	- [数组实现](A_array.c)
 	- [链表实现](A_list.c) 
