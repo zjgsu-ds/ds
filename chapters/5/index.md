@@ -11,6 +11,10 @@ title: 5 树和二叉树
 
 [下载](tree.c)
 
+## 实验
+
+[题目下载](lab.doc)
+
 ## 可视化演示
 
 - [二叉搜索树](http://www.cs.usfca.edu/~galles/visualization/BST.html)

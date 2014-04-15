@@ -7,6 +7,7 @@ comments: false
 
 ## 目录
 
+0. [教学大纲](docs/syllabus.doc)
 1. [绪论](chapters/1)
 2. [线性表](chapters/2)
 3. [栈与队列](chapters/3)
