@@ -7,6 +7,11 @@ title: 2. 线性表
 
 - [下载](chap2.ppt)
 
+## 实验
+
+- [顺序表](linearlist.doc)
+- [链表](linkedlist.doc)
+
 ## 代码
 
 ### 顺序表
@@ -22,4 +27,3 @@ title: 2. 线性表
 - [单链表](LinkList.c)
 - [集合并的链表实现](Union_linkList.c)
 - [多项式加法](polynomial_operation.c)
-

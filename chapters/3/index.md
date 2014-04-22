@@ -8,6 +8,11 @@ title: 3. 堆栈和队列
 - [栈](chap3_stack.ppt)
 - [队列](chap3_queue.ppt)
 
+## 实验
+
+- [栈](stack.doc)
+- [队列](queue.doc)
+
 ## 可视化演示
 
 - [堆栈(数组实现)](http://www.cs.usfca.edu/~galles/visualization/StackArray.html)
