@@ -18,11 +18,18 @@ comments: false
 
 - [往年题目参考](docs/lab.doc)
 
+### 第三方图形库
+
+- [EGE（Easy Graphics Engine）](http://tcgraphics.sourceforge.net)
+- [EasyX](http://www.easyx.cn)
+- [自行搜索](http://www.baidu.com/#wd=C语言%20图形编程&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg&rsv_sug3=6&rsv_sug4=341&rsv_sug1=3&rsv_sug2=0&inputT=1195)
+
 ## 作业
 
 - [第5周](homework/5)
 - [第6周](homework/6)
 - [第7周](homework/7)
+- [第9周](homework/9)
 
 ## 网络资源
 
