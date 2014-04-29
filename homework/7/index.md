@@ -22,6 +22,6 @@ title: 第7周作业
 - F
 	- [数组实现](F_array.c)
 	- [链表实现](F_list.c)
-- [G](G.c)
+- [G](G.c)
 - [H](H.c)
 - [I](I.c)
