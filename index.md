@@ -13,6 +13,7 @@ comments: false
 3. [栈与队列](chapters/3)
 4. [数组和串](chapters/4)
 5. [树和二叉树](chapters/5)
+6. [图](chapters/6)
 
 ## 实验
 
