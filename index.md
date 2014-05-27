@@ -15,6 +15,7 @@ comments: false
 5. [树和二叉树](chapters/5)
 6. [图](chapters/6)
 7. [查找](chapters/7)
+8. [排序](chapters/8)
 
 ## 实验
 
