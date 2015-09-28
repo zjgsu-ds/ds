@@ -1,4 +1,4 @@
-## Jekyll ds
+## Data Structure Course
 
 [![Build Status](https://travis-ci.org/zjsu/ds.svg?branch=gh-pages)](https://travis-ci.org/zjsu/ds)
 
