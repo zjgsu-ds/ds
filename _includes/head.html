@@ -8,8 +8,6 @@
   <meta name="description" content="{{ description | strip_html }}">
   {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
 
-  {% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'index.html' }}{% endif %}{% endcapture %}
-  <link rel="canonical" href="{{ canonical }}">
   <link rel="icon" href="{{ root_url }}/favicon.ico">
   <link rel="stylesheet" href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" type="text/css">
   <link rel="stylesheet" href="{{ root_url }}/stylesheets/pygment.css" media="screen, projection" type="text/css">
