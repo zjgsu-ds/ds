@@ -1,2 +1,5 @@
+.sass-cache/
 _site/
-a.out
+.bundle/
+vendor/
+Gemfile.lock
